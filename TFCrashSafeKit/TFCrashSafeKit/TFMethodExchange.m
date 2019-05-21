@@ -17,9 +17,20 @@
     if (tf_methodHasExchanged(cls, originSel) == NO) {
         Method originMethod = class_getInstanceMethod(cls, originSel);
         Method toMethod = class_getInstanceMethod(cls, toSel);
-        if (originMethod && toMethod){
-            method_exchangeImplementations(originMethod, toMethod);
+        
+        IMP toImp = method_getImplementation(toMethod);
+        const char *toTypeEncoding = method_getTypeEncoding(toMethod);
+        BOOL addMethod = class_addMethod(cls,originSel,toImp,toTypeEncoding);
+        if (addMethod) {
+            IMP originImp = method_getImplementation(originMethod);
+            const char *originTypeEncoding = method_getTypeEncoding(originMethod);
+            class_replaceMethod(cls,toSel,originImp,originTypeEncoding);
             tf_methodExchangeRecord(cls, originSel);
+        }else{
+            if (originMethod && toMethod){
+                method_exchangeImplementations(originMethod, toMethod);
+                tf_methodExchangeRecord(cls, originSel);
+            }
         }
     }
     tf_exchangeUnlock();
@@ -31,9 +42,20 @@
     if (tf_methodHasExchanged(cls, originSel) == NO) {
         Method originMethod = class_getClassMethod(cls, originSel);
         Method toMethod = class_getClassMethod(cls, toSel);
-        if (originMethod && toMethod){
-            method_exchangeImplementations(originMethod, toMethod);
+        
+        IMP toImp = method_getImplementation(toMethod);
+        const char *toTypeEncoding = method_getTypeEncoding(toMethod);
+        BOOL addMethod = class_addMethod(cls,originSel,toImp,toTypeEncoding);
+        if (addMethod) {
+            IMP originImp = method_getImplementation(originMethod);
+            const char *originTypeEncoding = method_getTypeEncoding(originMethod);
+            class_replaceMethod(cls,toSel,originImp,originTypeEncoding);
             tf_methodExchangeRecord(cls, originSel);
+        }else{
+            if (originMethod && toMethod){
+                method_exchangeImplementations(originMethod, toMethod);
+                tf_methodExchangeRecord(cls, originSel);
+            }
         }
     }
     tf_exchangeUnlock();

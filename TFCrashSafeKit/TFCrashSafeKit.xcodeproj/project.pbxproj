@@ -11,6 +11,11 @@
 		900887B22293D3CF0036A49C /* NSDictionary+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887B12293D3CF0036A49C /* NSDictionary+TFCrashSafe.m */; };
 		900887B52293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887B42293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m */; };
 		900887B82293DA070036A49C /* NSString+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887B72293DA070036A49C /* NSString+TFCrashSafe.m */; };
+		900887E7229410170036A49C /* NSObject+UnrecognizedSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887E6229410170036A49C /* NSObject+UnrecognizedSelector.m */; };
+		903F52A72295181100990586 /* NSNotificationCenter+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F52A62295181100990586 /* NSNotificationCenter+TFCrashSafe.m */; };
+		903F52AA22951AE700990586 /* NSObject+TFDeallocSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F52A922951AE700990586 /* NSObject+TFDeallocSafe.m */; };
+		90ADEBCC2294E912008A60E4 /* NSObject+TFKVOSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90ADEBCB2294E912008A60E4 /* NSObject+TFKVOSafe.m */; };
+		90AFB02A22952F4100A75E7D /* NSTimer+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AFB02922952F4100A75E7D /* NSTimer+TFCrashSafe.m */; };
 		90C53FA52293A29D001D4240 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C53FA42293A29D001D4240 /* AppDelegate.m */; };
 		90C53FA82293A29D001D4240 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C53FA72293A29D001D4240 /* ViewController.m */; };
 		90C53FAB2293A29D001D4240 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90C53FA92293A29D001D4240 /* Main.storyboard */; };
@@ -19,6 +24,7 @@
 		90C53FB32293A29E001D4240 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C53FB22293A29E001D4240 /* main.m */; };
 		90C53FBE2293A391001D4240 /* TFMethodExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C53FBD2293A391001D4240 /* TFMethodExchange.m */; };
 		90C53FC12293AB8E001D4240 /* NSArray+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C53FC02293AB8E001D4240 /* NSArray+TFCrashSafe.m */; };
+		90CEE7712294FEE3006619D8 /* TestUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CEE7702294FEE3006619D8 /* TestUIViewController.m */; };
 		EA22BF6606EDA5DEB2AEC236 /* libPods-TFCrashSafeKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEABC2A2F4F103A00C63C26 /* libPods-TFCrashSafeKit.a */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +37,17 @@
 		900887B42293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+TFCrashSafe.m"; sourceTree = "<group>"; };
 		900887B62293DA070036A49C /* NSString+TFCrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TFCrashSafe.h"; sourceTree = "<group>"; };
 		900887B72293DA070036A49C /* NSString+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TFCrashSafe.m"; sourceTree = "<group>"; };
+		900887E5229410170036A49C /* NSObject+UnrecognizedSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+UnrecognizedSelector.h"; sourceTree = "<group>"; };
+		900887E6229410170036A49C /* NSObject+UnrecognizedSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+UnrecognizedSelector.m"; sourceTree = "<group>"; };
+		902249AD2294F4FC005D6ADA /* TFCrashSafeKitConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFCrashSafeKitConst.h; sourceTree = "<group>"; };
+		903F52A52295181100990586 /* NSNotificationCenter+TFCrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+TFCrashSafe.h"; sourceTree = "<group>"; };
+		903F52A62295181100990586 /* NSNotificationCenter+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+TFCrashSafe.m"; sourceTree = "<group>"; };
+		903F52A822951AE700990586 /* NSObject+TFDeallocSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TFDeallocSafe.h"; sourceTree = "<group>"; };
+		903F52A922951AE700990586 /* NSObject+TFDeallocSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TFDeallocSafe.m"; sourceTree = "<group>"; };
+		90ADEBCA2294E912008A60E4 /* NSObject+TFKVOSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TFKVOSafe.h"; sourceTree = "<group>"; };
+		90ADEBCB2294E912008A60E4 /* NSObject+TFKVOSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TFKVOSafe.m"; sourceTree = "<group>"; };
+		90AFB02822952F4100A75E7D /* NSTimer+TFCrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+TFCrashSafe.h"; sourceTree = "<group>"; };
+		90AFB02922952F4100A75E7D /* NSTimer+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+TFCrashSafe.m"; sourceTree = "<group>"; };
 		90C53FA02293A29D001D4240 /* TFCrashSafeKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFCrashSafeKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C53FA32293A29D001D4240 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90C53FA42293A29D001D4240 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +62,8 @@
 		90C53FBD2293A391001D4240 /* TFMethodExchange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFMethodExchange.m; sourceTree = "<group>"; };
 		90C53FBF2293AB8E001D4240 /* NSArray+TFCrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+TFCrashSafe.h"; sourceTree = "<group>"; };
 		90C53FC02293AB8E001D4240 /* NSArray+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TFCrashSafe.m"; sourceTree = "<group>"; };
+		90CEE76F2294FEE3006619D8 /* TestUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUIViewController.h; sourceTree = "<group>"; };
+		90CEE7702294FEE3006619D8 /* TestUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUIViewController.m; sourceTree = "<group>"; };
 		A9A0510E99466FB6DE2254AE /* Pods-TFCrashSafeKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFCrashSafeKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TFCrashSafeKit/Pods-TFCrashSafeKit.debug.xcconfig"; sourceTree = "<group>"; };
 		AFEABC2A2F4F103A00C63C26 /* libPods-TFCrashSafeKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TFCrashSafeKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA8C1E0B9DA7A6A5C2F83DB /* Pods-TFCrashSafeKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFCrashSafeKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TFCrashSafeKit/Pods-TFCrashSafeKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +114,8 @@
 				90C53FA42293A29D001D4240 /* AppDelegate.m */,
 				90C53FA62293A29D001D4240 /* ViewController.h */,
 				90C53FA72293A29D001D4240 /* ViewController.m */,
+				90CEE76F2294FEE3006619D8 /* TestUIViewController.h */,
+				90CEE7702294FEE3006619D8 /* TestUIViewController.m */,
 				90C53FAC2293A29E001D4240 /* Assets.xcassets */,
 				90C53FB12293A29E001D4240 /* Info.plist */,
 				90C53FAE2293A29E001D4240 /* LaunchScreen.storyboard */,
@@ -110,8 +131,19 @@
 				900887B42293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m */,
 				900887B62293DA070036A49C /* NSString+TFCrashSafe.h */,
 				900887B72293DA070036A49C /* NSString+TFCrashSafe.m */,
+				900887E5229410170036A49C /* NSObject+UnrecognizedSelector.h */,
+				900887E6229410170036A49C /* NSObject+UnrecognizedSelector.m */,
+				90ADEBCA2294E912008A60E4 /* NSObject+TFKVOSafe.h */,
+				90ADEBCB2294E912008A60E4 /* NSObject+TFKVOSafe.m */,
+				903F52A52295181100990586 /* NSNotificationCenter+TFCrashSafe.h */,
+				903F52A62295181100990586 /* NSNotificationCenter+TFCrashSafe.m */,
+				903F52A822951AE700990586 /* NSObject+TFDeallocSafe.h */,
+				903F52A922951AE700990586 /* NSObject+TFDeallocSafe.m */,
+				90AFB02822952F4100A75E7D /* NSTimer+TFCrashSafe.h */,
+				90AFB02922952F4100A75E7D /* NSTimer+TFCrashSafe.m */,
 				90C53FBC2293A391001D4240 /* TFMethodExchange.h */,
 				90C53FBD2293A391001D4240 /* TFMethodExchange.m */,
+				902249AD2294F4FC005D6ADA /* TFCrashSafeKitConst.h */,
 			);
 			path = TFCrashSafeKit;
 			sourceTree = "<group>";
@@ -217,8 +249,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AFB02A22952F4100A75E7D /* NSTimer+TFCrashSafe.m in Sources */,
 				90C53FA82293A29D001D4240 /* ViewController.m in Sources */,
+				90ADEBCC2294E912008A60E4 /* NSObject+TFKVOSafe.m in Sources */,
+				90CEE7712294FEE3006619D8 /* TestUIViewController.m in Sources */,
+				900887E7229410170036A49C /* NSObject+UnrecognizedSelector.m in Sources */,
 				90C53FB32293A29E001D4240 /* main.m in Sources */,
+				903F52AA22951AE700990586 /* NSObject+TFDeallocSafe.m in Sources */,
+				903F52A72295181100990586 /* NSNotificationCenter+TFCrashSafe.m in Sources */,
 				900887B52293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m in Sources */,
 				900887B82293DA070036A49C /* NSString+TFCrashSafe.m in Sources */,
 				90C53FBE2293A391001D4240 /* TFMethodExchange.m in Sources */,
@@ -370,6 +408,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TFCrashSafeKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TFCrashSafeKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

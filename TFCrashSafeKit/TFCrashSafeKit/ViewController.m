@@ -14,6 +14,7 @@
 #import "NSMutableDictionary+TFCrashSafe.h"
 #import "NSObject+UnrecognizedSelector.h"
 #import "NSObject+TFKVOSafe.h"
+#import "NSTimer+TFCrashSafe.h"
 #import "TestUIViewController.h"
 @interface ViewController ()
 
@@ -21,21 +22,33 @@
 
 @implementation ViewController
 
+-(void)timerRun:(NSTimer *)timer{
+    NSLog(@">>>>>>>>>>:timerRun:%@",timer);
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    [NSObject useSafe_TFKVOSafe];
+    [NSTimer useSafe_TFDeallocSafe];
     
-    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self removeObserver:self forKeyPath:@"title"];
-    [self removeObserver:self forKeyPath:@"title"];
-    [self removeObserver:self forKeyPath:@"title"];
-    [self removeObserver:self forKeyPath:@"title"];
-    
+    NSTimer *tt = [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                                 selector:@selector(timerRun:)
+                                   userInfo:self
+                                    repeats:YES];
+    NSLog(@">>>55:%@",tt);
+//    [NSObject useSafe_TFKVOSafe];
+//
+//    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+//    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+//    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
+//
+//    [self removeObserver:self forKeyPath:@"title"];
+//    [self removeObserver:self forKeyPath:@"title"];
+//    [self removeObserver:self forKeyPath:@"title"];
+//    [self removeObserver:self forKeyPath:@"title"];
+//
     
     
 //    [NSMutableDictionary useSafe];

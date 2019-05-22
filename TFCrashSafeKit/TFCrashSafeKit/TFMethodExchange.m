@@ -42,10 +42,11 @@
     if (tf_methodHasExchanged(cls, originSel) == NO) {
         Method originMethod = class_getClassMethod(cls, originSel);
         Method toMethod = class_getClassMethod(cls, toSel);
-        
+
+        Class metaClass = objc_getMetaClass(NSStringFromClass(cls).UTF8String);
         IMP toImp = method_getImplementation(toMethod);
         const char *toTypeEncoding = method_getTypeEncoding(toMethod);
-        BOOL addMethod = class_addMethod(cls,originSel,toImp,toTypeEncoding);
+        BOOL addMethod = class_addMethod(metaClass,originSel,toImp,toTypeEncoding);
         if (addMethod) {
             IMP originImp = method_getImplementation(originMethod);
             const char *originTypeEncoding = method_getTypeEncoding(originMethod);

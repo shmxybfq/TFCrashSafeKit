@@ -12,6 +12,7 @@
 #import "TFCrashSafeKitConst.h"
 #import "NSNotificationCenter+TFCrashSafe.h"
 #import "NSObject+TFKVOSafe.h"
+#import "TFCrashSafeKitManager.h"
 
 @implementation NSObject (TFDeallocSafe)
 

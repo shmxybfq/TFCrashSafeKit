@@ -9,6 +9,15 @@
 #ifndef TFCrashSafeKitConst_h
 #define TFCrashSafeKitConst_h
 
+typedef NS_OPTIONS(NSUInteger, TFCrashSafeType) {
+    TFCrashSafeTypeAll = 1 << 0,
+    TFCrashSafeTypeNone = 1 << 1,
+    TFCrashSafeTypeContainer = 1 << 2,
+    TFCrashSafeTypeKvo = 1 << 3,
+    TFCrashSafeTypeTimer = 1 << 4,
+    TFCrashSafeTypeUIThread = 1 << 5,
+    TFCrashSafeTypeNotification = 1 << 6,
+};
 
 /**
  *  exemple :
@@ -69,5 +78,7 @@ NSValue *associate_value = [NSValue value:&value withObjCType:@encode(ctype)];\
 objc_setAssociatedObject(self, @selector(getter), associate_value, OBJC_ASSOCIATION_ASSIGN);\
 }
 #endif
+
+
 
 #endif /* TFCrashSafeKitConst_h */

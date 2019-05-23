@@ -9,7 +9,7 @@
 #import "NSArray+TFCrashSafe.h"
 #import "TFMethodExchange.h"
 #import <objc/runtime.h>
-
+#import "TFCrashSafeKitManager.h"
 
 @implementation NSArray (TFCrashSafe)
 
@@ -52,16 +52,34 @@
 - (id)tfsafe_objectAtIndex:(NSUInteger)index {
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndex:index];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_objectAtIndex:index];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {
+                return nil;
+            }
+        }
     }
-    NSAssert(NO, ([NSString stringWithFormat:@"exception:%@ fuc:%@ index:%@",[self class],NSStringFromSelector(_cmd),@(index)]));
     return nil;
 }
 
 - (id)tfsafe_objectAtIndexedSubscript:(NSUInteger)index {
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexedSubscript:index];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_objectAtIndexedSubscript:index];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {
+                return nil;
+            }
+        }
     }
-    NSAssert(NO, ([NSString stringWithFormat:@"exception:%@ fuc:%@ index:%@",[self class],NSStringFromSelector(_cmd),@(index)]));
     return nil;
 }
 

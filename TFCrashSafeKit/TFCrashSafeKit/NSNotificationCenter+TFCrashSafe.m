@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "TFMethodExchange.h"
 #import "TFCrashSafeKitConst.h"
+#import "TFCrashSafeKitManager.h"
 
 @implementation NSNotificationCenter (TFCrashSafe)
 

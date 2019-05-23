@@ -9,6 +9,7 @@
 #import "NSMutableDictionary+TFCrashSafe.h"
 #import "TFMethodExchange.h"
 #import <objc/runtime.h>
+#import "TFCrashSafeKitManager.h"
 
 @implementation NSMutableDictionary (TFCrashSafe)
 
@@ -43,24 +44,56 @@
 -(void)tfsafe_setObject:(id)anObject forKey:(id<NSCopying>)aKey{
     if (anObject && aKey) {
         [self tfsafe_setObject:anObject forKey:aKey];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_setObject:anObject forKey:aKey];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {}
+        }
     }
 }
 
 - (void)tfsafe_setObject:(id)anObject forKeyedSubscript:(id < NSCopying >)aKey{
     if (anObject && aKey) {
         [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {}
+        }
     }
 }
 
 - (void)tfsafe_setDictionary:(NSDictionary *)otherDictionary{
     if (otherDictionary && [otherDictionary isKindOfClass:[NSDictionary class]]) {
         [self tfsafe_setDictionary:otherDictionary];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_setDictionary:otherDictionary];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {}
+        }
     }
 }
 
 -(void)tfsafe_addEntriesFromDictionary:(NSDictionary *)otherDictionary{
     if (otherDictionary && [otherDictionary isKindOfClass:[NSDictionary class]]) {
         [self tfsafe_addEntriesFromDictionary:otherDictionary];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_addEntriesFromDictionary:otherDictionary];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {}
+        }
     }
 }
 
@@ -68,12 +101,28 @@
 -(void)tfsafe_removeObjectForKey:(id)aKey{
     if (aKey) {
         [self tfsafe_removeObjectForKey:aKey];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_removeObjectForKey:aKey];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {}
+        }
     }
 }
 
 -(void)tfsafe_removeObjectsForKeys:(NSArray *)keyArray{
     if (keyArray && [keyArray isKindOfClass:[NSArray class]]) {
         [self tfsafe_removeObjectsForKeys:keyArray];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_removeObjectsForKeys:keyArray];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {}
+        }
     }
 }
 

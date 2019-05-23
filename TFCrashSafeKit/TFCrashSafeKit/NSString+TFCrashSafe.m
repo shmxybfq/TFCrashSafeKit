@@ -9,6 +9,7 @@
 #import "NSString+TFCrashSafe.h"
 #import "TFMethodExchange.h"
 #import <objc/runtime.h>
+#import "TFCrashSafeKitManager.h"
 
 @implementation NSString (TFCrashSafe)
 
@@ -33,6 +34,16 @@
 -(NSString *)tfsafe_substringFromIndex:(NSUInteger)from{
     if (from >= 0 && from < self.length) {
         return [self tfsafe_substringFromIndex:from];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_substringFromIndex:from];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {
+                return nil;
+            }
+        }
     }
     return nil;
 }
@@ -40,6 +51,16 @@
 - (NSString *)tfsafe_substringToIndex:(NSUInteger)to{
     if (to >= 0 && to < self.length) {
         return [self tfsafe_substringToIndex:to];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_substringToIndex:to];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {
+                return nil;
+            }
+        }
     }
     return nil;
 }
@@ -47,6 +68,16 @@
 - (NSString *)tfsafe_substringWithRange:(NSRange)range{
     if (range.location >= 0 && range.length >= 0 && (range.location + range.length) < self.length) {
         return [self tfsafe_substringWithRange:range];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_substringWithRange:range];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {
+                return nil;
+            }
+        }
     }
     return nil;
 }
@@ -54,6 +85,16 @@
 -(unichar)tfsafe_characterAtIndex:(NSUInteger)index{
     if (index >= 0 && index < self.length) {
         return [self tfsafe_characterAtIndex:index];
+    }else{
+        if ([TFCrashSafeKitManager shareInstance].collectException) {
+            @try {
+                [self tfsafe_characterAtIndex:index];
+            } @catch (NSException *exception) {
+                NSLog(@">>>>:%@",exception);
+            } @finally {
+                return 0;
+            }
+        }
     }
     return 0;
 }

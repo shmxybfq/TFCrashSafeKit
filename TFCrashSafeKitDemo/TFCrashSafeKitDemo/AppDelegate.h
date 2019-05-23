@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  TFCrashSafeKit
+//  TFCrashSafeKitDemo
 //
-//  Created by zhutaofeng on 2019/5/21.
+//  Created by zhutaofeng on 2019/5/23.
 //  Copyright © 2019 ztf. All rights reserved.
 //
 

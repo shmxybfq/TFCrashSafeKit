@@ -30,14 +30,14 @@
     
     [super viewDidLoad];
     
-    [NSTimer useSafe_TFDeallocSafe];
+//    [NSTimer useSafe_TFDeallocSafe];
+//    NSTimer *tt = [NSTimer scheduledTimerWithTimeInterval:1
+//                                     target:self
+//                                                 selector:@selector(timerRun:)
+//                                   userInfo:self
+//                                    repeats:YES];
+//    NSLog(@">>>55:%@",tt);
     
-    NSTimer *tt = [NSTimer scheduledTimerWithTimeInterval:1
-                                     target:self
-                                                 selector:@selector(timerRun:)
-                                   userInfo:self
-                                    repeats:YES];
-    NSLog(@">>>55:%@",tt);
 //    [NSObject useSafe_TFKVOSafe];
 //
 //    [self addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:nil];
@@ -48,7 +48,7 @@
 //    [self removeObserver:self forKeyPath:@"title"];
 //    [self removeObserver:self forKeyPath:@"title"];
 //    [self removeObserver:self forKeyPath:@"title"];
-//
+
     
     
 //    [NSMutableDictionary useSafe];

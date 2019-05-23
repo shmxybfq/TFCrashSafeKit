@@ -12,6 +12,7 @@
 		900887B52293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887B42293D3DA0036A49C /* NSMutableDictionary+TFCrashSafe.m */; };
 		900887B82293DA070036A49C /* NSString+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887B72293DA070036A49C /* NSString+TFCrashSafe.m */; };
 		900887E7229410170036A49C /* NSObject+UnrecognizedSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 900887E6229410170036A49C /* NSObject+UnrecognizedSelector.m */; };
+		900DCCD922962C90009545EA /* UIView+TFUICrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 900DCCD822962C90009545EA /* UIView+TFUICrashSafe.m */; };
 		903F52A72295181100990586 /* NSNotificationCenter+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F52A62295181100990586 /* NSNotificationCenter+TFCrashSafe.m */; };
 		903F52AA22951AE700990586 /* NSObject+TFDeallocSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F52A922951AE700990586 /* NSObject+TFDeallocSafe.m */; };
 		90ADEBCC2294E912008A60E4 /* NSObject+TFKVOSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90ADEBCB2294E912008A60E4 /* NSObject+TFKVOSafe.m */; };
@@ -39,11 +40,14 @@
 		900887B72293DA070036A49C /* NSString+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TFCrashSafe.m"; sourceTree = "<group>"; };
 		900887E5229410170036A49C /* NSObject+UnrecognizedSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+UnrecognizedSelector.h"; sourceTree = "<group>"; };
 		900887E6229410170036A49C /* NSObject+UnrecognizedSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+UnrecognizedSelector.m"; sourceTree = "<group>"; };
+		900DCCD722962C90009545EA /* UIView+TFUICrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+TFUICrashSafe.h"; sourceTree = "<group>"; };
+		900DCCD822962C90009545EA /* UIView+TFUICrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+TFUICrashSafe.m"; sourceTree = "<group>"; };
 		902249AD2294F4FC005D6ADA /* TFCrashSafeKitConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFCrashSafeKitConst.h; sourceTree = "<group>"; };
 		903F52A52295181100990586 /* NSNotificationCenter+TFCrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+TFCrashSafe.h"; sourceTree = "<group>"; };
 		903F52A62295181100990586 /* NSNotificationCenter+TFCrashSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+TFCrashSafe.m"; sourceTree = "<group>"; };
 		903F52A822951AE700990586 /* NSObject+TFDeallocSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TFDeallocSafe.h"; sourceTree = "<group>"; };
 		903F52A922951AE700990586 /* NSObject+TFDeallocSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TFDeallocSafe.m"; sourceTree = "<group>"; };
+		9045F3A322963DF0001B0C6B /* TFCrashSafeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFCrashSafeKit.h; sourceTree = "<group>"; };
 		90ADEBCA2294E912008A60E4 /* NSObject+TFKVOSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+TFKVOSafe.h"; sourceTree = "<group>"; };
 		90ADEBCB2294E912008A60E4 /* NSObject+TFKVOSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TFKVOSafe.m"; sourceTree = "<group>"; };
 		90AFB02822952F4100A75E7D /* NSTimer+TFCrashSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+TFCrashSafe.h"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				90C53FAE2293A29E001D4240 /* LaunchScreen.storyboard */,
 				90C53FB22293A29E001D4240 /* main.m */,
 				90C53FA92293A29D001D4240 /* Main.storyboard */,
+				9045F3A322963DF0001B0C6B /* TFCrashSafeKit.h */,
 				90C53FBF2293AB8E001D4240 /* NSArray+TFCrashSafe.h */,
 				90C53FC02293AB8E001D4240 /* NSArray+TFCrashSafe.m */,
 				900887B02293D3CF0036A49C /* NSDictionary+TFCrashSafe.h */,
@@ -137,6 +142,8 @@
 				900887B72293DA070036A49C /* NSString+TFCrashSafe.m */,
 				90AFB02822952F4100A75E7D /* NSTimer+TFCrashSafe.h */,
 				90AFB02922952F4100A75E7D /* NSTimer+TFCrashSafe.m */,
+				900DCCD722962C90009545EA /* UIView+TFUICrashSafe.h */,
+				900DCCD822962C90009545EA /* UIView+TFUICrashSafe.m */,
 				90CEE76F2294FEE3006619D8 /* TestUIViewController.h */,
 				90CEE7702294FEE3006619D8 /* TestUIViewController.m */,
 				902249AD2294F4FC005D6ADA /* TFCrashSafeKitConst.h */,
@@ -262,6 +269,7 @@
 				90C53FBE2293A391001D4240 /* TFMethodExchange.m in Sources */,
 				90C53FA52293A29D001D4240 /* AppDelegate.m in Sources */,
 				900887B22293D3CF0036A49C /* NSDictionary+TFCrashSafe.m in Sources */,
+				900DCCD922962C90009545EA /* UIView+TFUICrashSafe.m in Sources */,
 				90C53FC12293AB8E001D4240 /* NSArray+TFCrashSafe.m in Sources */,
 				900887AF2293D3740036A49C /* NSMutableArray+TFCrashSafe.m in Sources */,
 			);

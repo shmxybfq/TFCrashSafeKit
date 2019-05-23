@@ -12,7 +12,7 @@
 @interface NSObject (TFKVOSafe)
 
 @property(nonatomic,strong)NSMutableDictionary <NSString *,TFKVOSafeContainer *>*observedPool;
-+(void)useSafe_TFKVOSafe;
++(void)useSafe_NSObject_TFKVOSafe;
 -(void)do_dealloc_TFKVOSafe;
 
 @end

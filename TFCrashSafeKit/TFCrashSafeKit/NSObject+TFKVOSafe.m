@@ -21,7 +21,7 @@
 //}
 //#pragma clang diagnostic pop
 
-+(void)useSafe_TFKVOSafe{
++(void)useSafe_NSObject_TFKVOSafe{
     
     SEL addOriginSel = NSSelectorFromString(@"addObserver:forKeyPath:options:context:");
     SEL addToSel = NSSelectorFromString(@"tfsafe_addObserver:forKeyPath:options:context:");

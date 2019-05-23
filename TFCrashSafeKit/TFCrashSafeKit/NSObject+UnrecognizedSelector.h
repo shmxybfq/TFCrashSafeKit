@@ -10,7 +10,7 @@
 
 @interface NSObject (UnrecognizedSelector)
 
-+(void)useSafe_UnrecognizedSelector;
++(void)useSafe_NSObject_UnrecognizedSelector;
 
 @end
 

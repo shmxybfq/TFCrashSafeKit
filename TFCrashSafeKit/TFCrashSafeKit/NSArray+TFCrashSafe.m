@@ -13,7 +13,7 @@
 
 @implementation NSArray (TFCrashSafe)
 
-+(void)useSafe{
++(void)useSafe_NSArray_TFCrashSafe{
     
     Class __NSArray0 = NSClassFromString(@"__NSArray0");//不可变的空数组
     Class __NSArrayI = NSClassFromString(@"__NSArrayI");//不可变的元素数量>1数组

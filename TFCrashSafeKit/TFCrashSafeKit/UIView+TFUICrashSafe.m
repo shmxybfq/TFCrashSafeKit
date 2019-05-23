@@ -14,7 +14,7 @@
 @implementation UIView (TFUICrashSafe)
 
 
-+(void)useSafe_TFDeallocSafe{
++(void)useSafe_UIView_TFUICrashSafe{
     
     SEL layoutOriginSel = NSSelectorFromString(@"setNeedsLayout");
     SEL layoutToSel = NSSelectorFromString(@"tfsafe_setNeedsLayout");

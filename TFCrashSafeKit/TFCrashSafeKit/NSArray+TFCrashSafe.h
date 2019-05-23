@@ -10,7 +10,7 @@
 
 @interface NSArray (TFCrashSafe)
 
-+(void)useSafe;
++(void)useSafe_NSArray_TFCrashSafe;
 
 @end
 

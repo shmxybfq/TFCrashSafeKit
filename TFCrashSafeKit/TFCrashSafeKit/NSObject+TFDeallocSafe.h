@@ -11,7 +11,7 @@
 
 @interface NSObject (TFDeallocSafe)
 
-+(void)useSafe_TFDeallocSafe;
++(void)useSafe_NSObject_TFDeallocSafe;
 
 @end
 

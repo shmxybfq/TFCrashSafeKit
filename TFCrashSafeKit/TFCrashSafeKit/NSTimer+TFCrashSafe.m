@@ -13,7 +13,7 @@
 
 @implementation NSTimer (TFCrashSafe)
 
-+(void)useSafe_TFDeallocSafe{
++(void)useSafe_NSTimer_TFCrashSafe{
     
     SEL timerOriginSel = NSSelectorFromString(@"timerWithTimeInterval:target:selector:userInfo:repeats:");
     SEL timerToSel = NSSelectorFromString(@"tfsafe_timerWithTimeInterval:target:selector:userInfo:repeats:");

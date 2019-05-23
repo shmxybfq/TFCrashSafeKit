@@ -12,7 +12,7 @@
 
 @implementation NSString (TFCrashSafe)
 
-+(void)useSafe{
++(void)useSafe_NSString_TFCrashSafe{
     
     Class __NSCFConstantString = NSClassFromString(@"__NSCFConstantString");
     

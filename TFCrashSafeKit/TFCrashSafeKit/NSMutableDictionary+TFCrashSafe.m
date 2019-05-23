@@ -12,7 +12,7 @@
 
 @implementation NSMutableDictionary (TFCrashSafe)
 
-+(void)useSafe{
++(void)useSafe_NSMutableDictionary_TFCrashSafe{
     
     Class __NSDictionaryM = NSClassFromString(@"__NSDictionaryM");//可变字典
     [TFMethodExchange tf_instanceMethodExchange:__NSDictionaryM

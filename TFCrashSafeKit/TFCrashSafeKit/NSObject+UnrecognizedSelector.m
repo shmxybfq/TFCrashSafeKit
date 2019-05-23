@@ -13,7 +13,7 @@
 @class TFUnrecognizedSelectorForwarding;
 @implementation NSObject (UnrecognizedSelector)
 
-+(void)useSafe_UnrecognizedSelector{
++(void)useSafe_NSObject_UnrecognizedSelector{
     
     SEL forwardingOriginSel = NSSelectorFromString(@"forwardingTargetForSelector:");
     SEL forwardingToSel = NSSelectorFromString(@"tfsafe_forwardingTargetForSelector:");

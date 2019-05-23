@@ -15,7 +15,7 @@
 @implementation NSNotificationCenter (TFCrashSafe)
 
 
-+(void)useSafe{
++(void)useSafe_NSNotificationCenter_TFCrashSafe{
     
     SEL addOriginSel = NSSelectorFromString(@"addObserver:selector:name:object:");
     SEL addToSel = NSSelectorFromString(@"tfsafe_addObserver:selector:name:object:");

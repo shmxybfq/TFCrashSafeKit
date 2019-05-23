@@ -12,7 +12,7 @@
 
 @implementation NSDictionary (TFCrashSafe)
 
-+(void)useSafe{
++(void)useSafe_NSDictionary_TFCrashSafe{
    
     Class __NSDictionary0 = NSClassFromString(@"__NSDictionary0");//不可变的空字典
     Class __NSDictionaryI = NSClassFromString(@"__NSDictionaryI");//不可变的元素数量>1字典

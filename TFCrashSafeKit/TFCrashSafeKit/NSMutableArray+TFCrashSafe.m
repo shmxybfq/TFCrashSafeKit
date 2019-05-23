@@ -12,7 +12,7 @@
 
 @implementation NSMutableArray (TFCrashSafe)
 
-+(void)useSafe{
++(void)useSafe_NSMutableArray_TFCrashSafe{
     
     Class __NSArrayM = NSClassFromString(@"__NSArrayM");
   

@@ -10,7 +10,7 @@
 
 @interface NSTimer (TFCrashSafe)
 
-+(void)useSafe_TFDeallocSafe;
++(void)useSafe_NSTimer_TFCrashSafe;
 
 @end
 

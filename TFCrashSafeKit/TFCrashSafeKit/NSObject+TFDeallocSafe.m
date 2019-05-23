@@ -15,7 +15,7 @@
 
 @implementation NSObject (TFDeallocSafe)
 
-+(void)useSafe_TFDeallocSafe{
++(void)useSafe_NSObject_TFDeallocSafe{
     
     SEL deallocOriginSel = NSSelectorFromString(@"dealloc");
     SEL deallocToSel = NSSelectorFromString(@"tfsafe_dealloc");

@@ -10,7 +10,7 @@
 
 @interface NSMutableArray (TFCrashSafe)
 
-+(void)useSafe;
++(void)useSafe_NSMutableArray_TFCrashSafe;
 
 @end
 

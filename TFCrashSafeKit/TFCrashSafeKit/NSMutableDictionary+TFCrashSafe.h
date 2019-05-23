@@ -10,7 +10,7 @@
 
 @interface NSMutableDictionary (TFCrashSafe)
 
-+(void)useSafe;
++(void)useSafe_NSMutableDictionary_TFCrashSafe;
 
 @end
 

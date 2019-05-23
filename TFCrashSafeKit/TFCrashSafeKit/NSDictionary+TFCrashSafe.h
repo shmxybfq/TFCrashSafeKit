@@ -11,7 +11,7 @@
 
 @interface NSDictionary (TFCrashSafe)
 
-+(void)useSafe;
++(void)useSafe_NSDictionary_TFCrashSafe;
 
 @end
 

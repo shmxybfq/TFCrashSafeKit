@@ -11,6 +11,8 @@
 @interface NSNotificationCenter (TFCrashSafe)
 
 @property(nonatomic,strong)NSMutableArray <NSString *>*notificationPool;
+
++(void)useSafe_NSNotificationCenter_TFCrashSafe;
 -(void)do_dealloc;
 
 @end

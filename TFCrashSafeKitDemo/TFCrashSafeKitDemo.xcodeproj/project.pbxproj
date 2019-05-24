@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		904ABA1D2297E56800AED14C /* NSObject+MethodExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 904ABA1C2297E56800AED14C /* NSObject+MethodExchange.m */; };
 		90A69B602296761D00102C95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B5F2296761D00102C95 /* AppDelegate.m */; };
 		90A69B632296761D00102C95 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B622296761D00102C95 /* ViewController.m */; };
 		90A69B662296761D00102C95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A69B642296761D00102C95 /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		904ABA1B2297E56800AED14C /* NSObject+MethodExchange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodExchange.h"; sourceTree = "<group>"; };
+		904ABA1C2297E56800AED14C /* NSObject+MethodExchange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodExchange.m"; sourceTree = "<group>"; };
 		90A69B5B2296761D00102C95 /* TFCrashSafeKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFCrashSafeKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A69B5E2296761D00102C95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90A69B5F2296761D00102C95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				90A69B8B2296765700102C95 /* TFMethodExchange.m */,
 				90A69B892296765700102C95 /* UIView+TFUICrashSafe.h */,
 				90A69B7C2296765700102C95 /* UIView+TFUICrashSafe.m */,
+				904ABA1B2297E56800AED14C /* NSObject+MethodExchange.h */,
+				904ABA1C2297E56800AED14C /* NSObject+MethodExchange.m */,
 			);
 			path = TFCrashSafeKit;
 			sourceTree = SOURCE_ROOT;
@@ -234,6 +239,7 @@
 				90A69B992296765700102C95 /* NSDictionary+TFCrashSafe.m in Sources */,
 				90A69B952296765700102C95 /* NSObject+UnrecognizedSelector.m in Sources */,
 				90A69B942296765700102C95 /* UIView+TFUICrashSafe.m in Sources */,
+				904ABA1D2297E56800AED14C /* NSObject+MethodExchange.m in Sources */,
 				90A69B932296765700102C95 /* TFCrashSafeKitManager.m in Sources */,
 				90A69BA02296769F00102C95 /* TestUIViewController.m in Sources */,
 				90A69B972296765700102C95 /* NSObject+TFKVOSafe.m in Sources */,

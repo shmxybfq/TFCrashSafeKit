@@ -7,21 +7,18 @@
 //
 
 #import "NSObject+UnrecognizedSelector.h"
-#import "TFMethodExchange.h"
 #import <objc/runtime.h>
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @class TFUnrecognizedSelectorForwarding;
 @implementation NSObject (UnrecognizedSelector)
 
 +(void)useSafe_NSObject_UnrecognizedSelector{
-    
-    SEL forwardingOriginSel = NSSelectorFromString(@"forwardingTargetForSelector:");
-    SEL forwardingToSel = NSSelectorFromString(@"tfsafe_forwardingTargetForSelector:");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:forwardingOriginSel
-                                          toSel:forwardingToSel];
-    
+    Class cls = [NSObject class];
+    [cls tf_instanceMethodExchange:@selector(forwardingTargetForSelector:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_forwardingTargetForSelector:)];
 }
 
 

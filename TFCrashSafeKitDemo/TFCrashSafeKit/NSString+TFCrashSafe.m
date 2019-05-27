@@ -7,28 +7,29 @@
 //
 
 #import "NSString+TFCrashSafe.h"
-#import "TFMethodExchange.h"
 #import <objc/runtime.h>
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @implementation NSString (TFCrashSafe)
 
 +(void)useSafe_NSString_TFCrashSafe{
+    Class cls = NSClassFromString(@"__NSCFConstantString");
+    [cls tf_instanceMethodExchange:@selector(substringFromIndex:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_substringFromIndex:)];
     
-    Class __NSCFConstantString = NSClassFromString(@"__NSCFConstantString");
+    [cls tf_instanceMethodExchange:@selector(substringToIndex:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_substringToIndex:)];
     
-    [TFMethodExchange tf_instanceMethodExchange:__NSCFConstantString
-                                      originSel:NSSelectorFromString(@"substringFromIndex:")
-                                          toSel:NSSelectorFromString(@"tfsafe_substringFromIndex:")];
-    [TFMethodExchange tf_instanceMethodExchange:__NSCFConstantString
-                                      originSel:NSSelectorFromString(@"substringToIndex:")
-                                          toSel:NSSelectorFromString(@"tfsafe_substringToIndex:")];
-    [TFMethodExchange tf_instanceMethodExchange:__NSCFConstantString
-                                      originSel:NSSelectorFromString(@"substringWithRange:")
-                                          toSel:NSSelectorFromString(@"tfsafe_substringWithRange:")];
-    [TFMethodExchange tf_instanceMethodExchange:__NSCFConstantString
-                                      originSel:NSSelectorFromString(@"characterAtIndex:")
-                                          toSel:NSSelectorFromString(@"tfsafe_characterAtIndex:")];
+    [cls tf_instanceMethodExchange:@selector(substringWithRange:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_substringWithRange:)];
+    
+    [cls tf_instanceMethodExchange:@selector(characterAtIndex:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_characterAtIndex:)];
 }
 
 -(NSString *)tfsafe_substringFromIndex:(NSUInteger)from{

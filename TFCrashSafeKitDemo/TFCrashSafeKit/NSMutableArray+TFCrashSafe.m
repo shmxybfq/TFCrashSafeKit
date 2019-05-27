@@ -7,15 +7,12 @@
 //
 
 #import "NSMutableArray+TFCrashSafe.h"
-#import "TFMethodExchange.h"
 #import <objc/runtime.h>
 #import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"
 @implementation NSMutableArray (TFCrashSafe)
 
 +(void)useSafe_NSMutableArray_TFCrashSafe{
-    
-    Class __NSArrayM = NSClassFromString(@"__NSArrayM");
   
     //不可变的只有一个元素的数组
     //只替换【objectAtIndex:】的效果包含了【objectAtIndex:】和【objectAtIndexedSubscript:】

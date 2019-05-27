@@ -8,32 +8,28 @@
 
 #import "UIView+TFUICrashSafe.h"
 #import <objc/runtime.h>
-#import "TFMethodExchange.h"
 #import "TFCrashSafeKitConst.h"
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @implementation UIView (TFUICrashSafe)
 
 
 +(void)useSafe_UIView_TFUICrashSafe{
     
-    SEL layoutOriginSel = NSSelectorFromString(@"setNeedsLayout");
-    SEL layoutToSel = NSSelectorFromString(@"tfsafe_setNeedsLayout");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:layoutOriginSel
-                                          toSel:layoutToSel];
+    Class cls = [UIView class];
+    [cls tf_instanceMethodExchange:@selector(setNeedsLayout)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_setNeedsLayout)];
+
+    [cls tf_instanceMethodExchange:@selector(setNeedsDisplay)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_setNeedsDisplay)];
     
-    SEL displayOriginSel = NSSelectorFromString(@"setNeedsDisplay");
-    SEL displayToSel = NSSelectorFromString(@"tfsafe_setNeedsDisplay");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:displayOriginSel
-                                          toSel:displayToSel];
+    [cls tf_instanceMethodExchange:@selector(setNeedsDisplayInRect)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_setNeedsDisplayInRect)];
     
-    SEL displayRectOriginSel = NSSelectorFromString(@"setNeedsDisplayInRect:");
-    SEL displayRectToSel = NSSelectorFromString(@"tfsafe_setNeedsDisplayInRect:");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:displayRectOriginSel
-                                          toSel:displayRectToSel];
 }
 
 

@@ -8,9 +8,9 @@
 
 #import "NSObject+TFKVOSafe.h"
 #import <objc/runtime.h>
-#import "TFMethodExchange.h"
 #import "TFCrashSafeKitConst.h"
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @implementation NSObject (TFKVOSafe)
 @dynamic observedPool;
@@ -24,23 +24,18 @@
 
 +(void)useSafe_NSObject_TFKVOSafe{
     
-    SEL addOriginSel = NSSelectorFromString(@"addObserver:forKeyPath:options:context:");
-    SEL addToSel = NSSelectorFromString(@"tfsafe_addObserver:forKeyPath:options:context:");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:addOriginSel
-                                          toSel:addToSel];
+    Class cls = [NSObject class];
+    [cls tf_instanceMethodExchange:@selector(addObserver:forKeyPath:options:context:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_addObserver:forKeyPath:options:context:)];
     
-    SEL removeOriginSel0 = NSSelectorFromString(@"removeObserver:forKeyPath:");
-    SEL removeToSel0 = NSSelectorFromString(@"tfsafe_removeObserver:forKeyPath:");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:removeOriginSel0
-                                          toSel:removeToSel0];
+    [cls tf_instanceMethodExchange:@selector(removeObserver:forKeyPath:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_removeObserver:forKeyPath:)];
     
-    SEL removeOriginSel1 = NSSelectorFromString(@"removeObserver:forKeyPath:context:");
-    SEL removeToSel1 = NSSelectorFromString(@"tfsafe_removeObserver:forKeyPath:context:");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:removeOriginSel1
-                                          toSel:removeToSel1];
+    [cls tf_instanceMethodExchange:@selector(removeObserver:forKeyPath:context:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_removeObserver:forKeyPath:context:)];
     
 }
 

@@ -9,21 +9,18 @@
 #import "NSNotificationCenter+TFCrashSafe.h"
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
-#import "TFMethodExchange.h"
 #import "TFCrashSafeKitConst.h"
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @implementation NSNotificationCenter (TFCrashSafe)
 
 
 +(void)useSafe_NSNotificationCenter_TFCrashSafe{
-    
-    SEL addOriginSel = NSSelectorFromString(@"addObserver:selector:name:object:");
-    SEL addToSel = NSSelectorFromString(@"tfsafe_addObserver:selector:name:object:");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:addOriginSel
-                                          toSel:addToSel];
-    
+    Class cls = [NSNotificationCenter class];
+    [cls tf_instanceMethodExchange:@selector(addObserver:selector:name:object:)
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_addObserver:selector:name:object:)];
 }
 
 tf_synthesize_category_property_retain(notificationPool, setNotificationPool);

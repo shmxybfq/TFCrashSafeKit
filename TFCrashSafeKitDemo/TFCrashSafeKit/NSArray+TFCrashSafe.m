@@ -7,7 +7,6 @@
 //
 
 #import "NSArray+TFCrashSafe.h"
-#import "TFMethodExchange.h"
 #import <objc/runtime.h>
 #import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"

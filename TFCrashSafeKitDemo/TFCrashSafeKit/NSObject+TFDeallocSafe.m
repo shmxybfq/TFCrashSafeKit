@@ -8,11 +8,11 @@
 
 #import "NSObject+TFDeallocSafe.h"
 #import <objc/runtime.h>
-#import "TFMethodExchange.h"
 #import "TFCrashSafeKitConst.h"
 #import "NSNotificationCenter+TFCrashSafe.h"
 #import "NSObject+TFKVOSafe.h"
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @implementation NSObject (TFDeallocSafe)
 
@@ -20,9 +20,12 @@
     
     SEL deallocOriginSel = NSSelectorFromString(@"dealloc");
     SEL deallocToSel = NSSelectorFromString(@"tfsafe_dealloc");
-    [TFMethodExchange tf_instanceMethodExchange:[self class]
-                                      originSel:deallocOriginSel
-                                          toSel:deallocToSel];
+  
+    Class cls = [NSObject class];
+    [cls tf_instanceMethodExchange:deallocOriginSel
+                           toClass:[self class]
+                             toSel:deallocToSel];
+    
 }
 
 -(void)tfsafe_dealloc{

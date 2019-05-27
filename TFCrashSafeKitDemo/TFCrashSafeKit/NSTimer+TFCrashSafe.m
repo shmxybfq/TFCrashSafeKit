@@ -8,26 +8,28 @@
 
 #import "NSTimer+TFCrashSafe.h"
 #import <objc/runtime.h>
-#import "TFMethodExchange.h"
 #import "TFCrashSafeKitConst.h"
 #import "TFCrashSafeKitManager.h"
+#import "NSObject+MethodExchange.h"
 
 @implementation NSTimer (TFCrashSafe)
 
 +(void)useSafe_NSTimer_TFCrashSafe{
     
-    SEL timerOriginSel = NSSelectorFromString(@"timerWithTimeInterval:target:selector:userInfo:repeats:");
-    SEL timerToSel = NSSelectorFromString(@"tfsafe_timerWithTimeInterval:target:selector:userInfo:repeats:");
-    [TFMethodExchange tf_classMethodExchange:[self class]
-                                   originSel:timerOriginSel
-                                       toSel:timerToSel];
+    Class cls = [NSTimer class];
     
+    SEL originTimer = @selector(timerWithTimeInterval:target:selector:userInfo:repeats:);
+    SEL toTimer = @selector(tfsafe_timerWithTimeInterval:target:selector:userInfo:repeats:);
+    [cls tf_instanceMethodExchange:originTimer
+                           toClass:[self class]
+                             toSel:toTimer];
     
-    SEL scheduledOriginSel = NSSelectorFromString(@"scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:");
-    SEL scheduledToSel = NSSelectorFromString(@"tfsafe_scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:");
-    [TFMethodExchange tf_classMethodExchange:[self class]
-                                   originSel:scheduledOriginSel
-                                       toSel:scheduledToSel];
+    SEL originScheduled = @selector(scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:);
+    SEL toScheduled = @selector(tfsafe_scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:);
+    [cls tf_instanceMethodExchange:originScheduled
+                           toClass:[self class]
+                             toSel:toScheduled];
+    
 }
 
 + (NSTimer *)tfsafe_timerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo{
@@ -103,7 +105,7 @@
             func(bridge.target, bridge.sel);
         }
     }
-
+    
 }
 -(void)tf_forwardingTimerImpParam:(NSTimer *)timer{
     TFTimerSafeBridge *bridge = self;

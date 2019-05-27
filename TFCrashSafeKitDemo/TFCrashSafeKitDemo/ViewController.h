@@ -10,7 +10,6 @@
 
 @interface ViewController : UIViewController
 
--(void)xxx;
 
 @end
 

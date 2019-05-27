@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		904ABA1D2297E56800AED14C /* NSObject+MethodExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 904ABA1C2297E56800AED14C /* NSObject+MethodExchange.m */; };
+		904BA4E5229BC5B200E6C313 /* ArrayTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904BA4E4229BC5B200E6C313 /* ArrayTestViewController.m */; };
 		90A69B602296761D00102C95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B5F2296761D00102C95 /* AppDelegate.m */; };
 		90A69B632296761D00102C95 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B622296761D00102C95 /* ViewController.m */; };
 		90A69B662296761D00102C95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A69B642296761D00102C95 /* Main.storyboard */; };
@@ -27,12 +28,13 @@
 		90A69B9B2296765700102C95 /* TFMethodExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B8B2296765700102C95 /* TFMethodExchange.m */; };
 		90A69B9C2296765700102C95 /* NSString+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B8E2296765700102C95 /* NSString+TFCrashSafe.m */; };
 		90A69B9D2296765700102C95 /* NSArray+TFCrashSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B902296765700102C95 /* NSArray+TFCrashSafe.m */; };
-		90A69BA02296769F00102C95 /* TestUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B9E2296769F00102C95 /* TestUIViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		904ABA1B2297E56800AED14C /* NSObject+MethodExchange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodExchange.h"; sourceTree = "<group>"; };
 		904ABA1C2297E56800AED14C /* NSObject+MethodExchange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodExchange.m"; sourceTree = "<group>"; };
+		904BA4E3229BC5B200E6C313 /* ArrayTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayTestViewController.h; sourceTree = "<group>"; };
+		904BA4E4229BC5B200E6C313 /* ArrayTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArrayTestViewController.m; sourceTree = "<group>"; };
 		90A69B5B2296761D00102C95 /* TFCrashSafeKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFCrashSafeKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A69B5E2296761D00102C95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90A69B5F2296761D00102C95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,8 +73,6 @@
 		90A69B8E2296765700102C95 /* NSString+TFCrashSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TFCrashSafe.m"; sourceTree = "<group>"; };
 		90A69B8F2296765700102C95 /* NSObject+TFKVOSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TFKVOSafe.h"; sourceTree = "<group>"; };
 		90A69B902296765700102C95 /* NSArray+TFCrashSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TFCrashSafe.m"; sourceTree = "<group>"; };
-		90A69B9E2296769F00102C95 /* TestUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUIViewController.m; sourceTree = "<group>"; };
-		90A69B9F2296769F00102C95 /* TestUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUIViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +110,8 @@
 				90A69B5F2296761D00102C95 /* AppDelegate.m */,
 				90A69B612296761D00102C95 /* ViewController.h */,
 				90A69B622296761D00102C95 /* ViewController.m */,
-				90A69B9F2296769F00102C95 /* TestUIViewController.h */,
-				90A69B9E2296769F00102C95 /* TestUIViewController.m */,
+				904BA4E3229BC5B200E6C313 /* ArrayTestViewController.h */,
+				904BA4E4229BC5B200E6C313 /* ArrayTestViewController.m */,
 				90A69B642296761D00102C95 /* Main.storyboard */,
 				90A69B672296761D00102C95 /* Assets.xcassets */,
 				90A69B692296761D00102C95 /* LaunchScreen.storyboard */,
@@ -228,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				904BA4E5229BC5B200E6C313 /* ArrayTestViewController.m in Sources */,
 				90A69B982296765700102C95 /* NSObject+TFDeallocSafe.m in Sources */,
 				90A69B9A2296765700102C95 /* NSMutableArray+TFCrashSafe.m in Sources */,
 				90A69B9C2296765700102C95 /* NSString+TFCrashSafe.m in Sources */,
@@ -241,7 +242,6 @@
 				90A69B942296765700102C95 /* UIView+TFUICrashSafe.m in Sources */,
 				904ABA1D2297E56800AED14C /* NSObject+MethodExchange.m in Sources */,
 				90A69B932296765700102C95 /* TFCrashSafeKitManager.m in Sources */,
-				90A69BA02296769F00102C95 /* TestUIViewController.m in Sources */,
 				90A69B972296765700102C95 /* NSObject+TFKVOSafe.m in Sources */,
 				90A69B9B2296765700102C95 /* TFMethodExchange.m in Sources */,
 				90A69B922296765700102C95 /* NSNotificationCenter+TFCrashSafe.m in Sources */,

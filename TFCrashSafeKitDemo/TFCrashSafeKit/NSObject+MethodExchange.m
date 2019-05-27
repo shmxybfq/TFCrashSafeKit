@@ -13,29 +13,45 @@
 
 @implementation NSObject (MethodExchange)
 
-+(BOOL)tf_instanceMethodExchange:(Class)cls originSel:(SEL)originSel toSel:(SEL)toSel{
-    tf_exchangeLock();
-    if (tf_methodHasExchanged(cls, originSel) == NO) {
-        Method originMethod = class_getInstanceMethod([self class], originSel);
-        Method toMethod = class_getInstanceMethod(cls, toSel);
-        
-        IMP toImp = method_getImplementation(toMethod);
-        const char *toTypeEncoding = method_getTypeEncoding(toMethod);
-        BOOL addMethod = class_addMethod([self class],originSel,toImp,toTypeEncoding);
-        
-        if (addMethod) {
-//            IMP originImp = method_getImplementation(originMethod);
-//            const char *originTypeEncoding = method_getTypeEncoding(originMethod);
-//            class_replaceMethod([self class],toSel,originImp,originTypeEncoding);
-            tf_methodExchangeRecord(cls, originSel);
-        }else{
-            if (originMethod && toMethod){
-                method_exchangeImplementations(originMethod, toMethod);
-//                tf_methodExchangeRecord(cls, originSel);
-            }
++(BOOL)tf_instanceMethodExchange:(SEL)originSel toClass:(Class)toClass  toSel:(SEL)toSel{
+//    tf_exchangeLock();
+    //    if (tf_methodHasExchanged(cls, originSel) == NO) {
+    Method originMethod = class_getInstanceMethod([self class], originSel);
+    Method toMethod = class_getInstanceMethod(toClass, toSel);
+    if (originMethod && toMethod) {
+        method_exchangeImplementations(originMethod, toMethod);
+        NSLog(@"交换成功:\n%@:\n%@:\n%@:\n%@",
+              NSStringFromClass([self class]),
+              NSStringFromSelector(originSel),
+              NSStringFromClass(toClass),
+              NSStringFromSelector(toSel));
+    }else{
+        NSLog(@"交换失败:%@:%@:%@:%@",
+              NSStringFromClass([self class]),
+              NSStringFromSelector(originSel),
+              NSStringFromClass(toClass),
+              NSStringFromSelector(toSel));
+    }
+    
+    return YES;
+    
+    IMP toImp = method_getImplementation(toMethod);
+    const char *toTypeEncoding = method_getTypeEncoding(toMethod);
+    BOOL addMethod = class_addMethod([self class],originSel,toImp,toTypeEncoding);
+    
+    if (addMethod) {
+        //            IMP originImp = method_getImplementation(originMethod);
+        //            const char *originTypeEncoding = method_getTypeEncoding(originMethod);
+        //            class_replaceMethod([self class],toSel,originImp,originTypeEncoding);
+        //            tf_methodExchangeRecord(cls, originSel);
+    }else{
+        if (originMethod && toMethod){
+            method_exchangeImplementations(originMethod, toMethod);
+            //                tf_methodExchangeRecord(cls, originSel);
         }
     }
-    tf_exchangeUnlock();
+    //    }
+//    tf_exchangeUnlock();
     return YES;
 }
 

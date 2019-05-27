@@ -15,19 +15,18 @@
 #import "NSObject+UnrecognizedSelector.h"
 #import "NSObject+TFKVOSafe.h"
 #import "NSTimer+TFCrashSafe.h"
-#import "TestUIViewController.h"
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
--(void)timerRun:(NSTimer *)timer{
-    NSLog(@">>>>>>>>>>:timerRun:%@",timer);
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 }
+
+
 @end

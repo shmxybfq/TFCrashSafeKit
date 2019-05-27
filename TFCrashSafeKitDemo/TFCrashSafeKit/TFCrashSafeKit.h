@@ -9,6 +9,7 @@
 #ifndef TFCrashSafeKit_h
 #define TFCrashSafeKit_h
 
+#import "TFCrashSafeKitManager.h"
 
 
 

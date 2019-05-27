@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (MethodExchange)
 
++(BOOL)tf_instanceMethodExchange:(SEL)originSel toClass:(Class)toClass  toSel:(SEL)toSel;
+
 @end
 
-NS_ASSUME_NONNULL_END
+

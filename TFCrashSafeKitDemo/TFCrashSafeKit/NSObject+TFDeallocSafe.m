@@ -11,7 +11,6 @@
 #import "TFCrashSafeKitConst.h"
 #import "NSNotificationCenter+TFCrashSafe.h"
 #import "NSObject+TFKVOSafe.h"
-#import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"
 
 @implementation NSObject (TFDeallocSafe)
@@ -30,7 +29,7 @@
 
 -(void)tfsafe_dealloc{
     [self tfsafe_dealloc];
-    [self do_dealloc_TFKVOSafe];
+    [NSObject do_dealloc_TFKVOSafe];
     [[NSNotificationCenter defaultCenter]do_dealloc];
     
 }

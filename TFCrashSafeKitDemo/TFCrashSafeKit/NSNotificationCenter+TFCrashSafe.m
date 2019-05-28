@@ -31,28 +31,39 @@ static inline NSString *tf_getNotificationKey(id observed,SEL sel,NSString *name
     return key;
 }
 
+
+tf_synthesize_category_property_retain(instanceAddressPool, setInstanceAddressPool);
 -(void)tfsafe_addObserver:(id)observer selector:(SEL)aSelector name:(NSNotificationName)aName object:(id)anObject{
+    NSLog(@"通知添加====:%@",aName);
     if (observer && aSelector && aName) {
         NSString *key = tf_getNotificationKey(observer, aSelector, aName);
         if (![self.notificationPool containsObject:key]) {
+            NSLog(@"通知添加成功");
             [self tfsafe_addObserver:observer selector:aSelector name:aName object:anObject];
+            
+            //添加完整记录
             if (self.notificationPool == nil)self.notificationPool = [[NSMutableArray alloc]init];
             [self.notificationPool addObject:key];
+            
+            //添加有通知的对象的记录,为了提高效率
+            if (self.instanceAddressPool == nil) {
+                self.instanceAddressPool = [[NSMutableArray alloc]init];
+            }
+            [self.instanceAddressPool addObject:[NSString stringWithFormat:@"%p",observer]];
+        }else{
+            NSLog(@"通知添加重复");
         }
+    }else{
+        NSLog(@"通知添加失败");
     }
 }
 
 -(void)do_dealloc{
     if ([[UIDevice currentDevice].systemVersion floatValue] <= 9.0) {
-        NSArray *notificationPool = [NSNotificationCenter defaultCenter].notificationPool;
-        if (notificationPool) {
-            for (NSString *key in notificationPool) {
-                NSString *p = [NSString stringWithFormat:@"%p",self];
-                if ([key hasPrefix:p]) {
-                    [[NSNotificationCenter defaultCenter]removeObserver:self];
-                    break;
-                }
-            }
+        NSString *address = [NSString stringWithFormat:@"%p",self];
+        if ([self.instanceAddressPool containsObject:address]) {
+            [self.instanceAddressPool removeObject:address];
+            [[NSNotificationCenter defaultCenter]removeObserver:self];
         }
     }
 }

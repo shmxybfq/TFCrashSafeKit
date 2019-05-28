@@ -10,6 +10,7 @@
 		904ABA1D2297E56800AED14C /* NSObject+MethodExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 904ABA1C2297E56800AED14C /* NSObject+MethodExchange.m */; };
 		904BA4E5229BC5B200E6C313 /* ArrayTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904BA4E4229BC5B200E6C313 /* ArrayTestViewController.m */; };
 		908743DD229BDAF800D5D51B /* DicTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 908743DC229BDAF800D5D51B /* DicTestViewController.m */; };
+		908743E0229CC93E00D5D51B /* NotificationTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 908743DF229CC93E00D5D51B /* NotificationTestViewController.m */; };
 		90A69B602296761D00102C95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B5F2296761D00102C95 /* AppDelegate.m */; };
 		90A69B632296761D00102C95 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A69B622296761D00102C95 /* ViewController.m */; };
 		90A69B662296761D00102C95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A69B642296761D00102C95 /* Main.storyboard */; };
@@ -37,6 +38,8 @@
 		904BA4E4229BC5B200E6C313 /* ArrayTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArrayTestViewController.m; sourceTree = "<group>"; };
 		908743DB229BDAF800D5D51B /* DicTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DicTestViewController.h; sourceTree = "<group>"; };
 		908743DC229BDAF800D5D51B /* DicTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DicTestViewController.m; sourceTree = "<group>"; };
+		908743DE229CC93E00D5D51B /* NotificationTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationTestViewController.h; sourceTree = "<group>"; };
+		908743DF229CC93E00D5D51B /* NotificationTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationTestViewController.m; sourceTree = "<group>"; };
 		90A69B5B2296761D00102C95 /* TFCrashSafeKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TFCrashSafeKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A69B5E2296761D00102C95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		90A69B5F2296761D00102C95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				90A69B622296761D00102C95 /* ViewController.m */,
 				904BA4E3229BC5B200E6C313 /* ArrayTestViewController.h */,
 				904BA4E4229BC5B200E6C313 /* ArrayTestViewController.m */,
+				908743DE229CC93E00D5D51B /* NotificationTestViewController.h */,
+				908743DF229CC93E00D5D51B /* NotificationTestViewController.m */,
 				908743DB229BDAF800D5D51B /* DicTestViewController.h */,
 				908743DC229BDAF800D5D51B /* DicTestViewController.m */,
 				90A69B642296761D00102C95 /* Main.storyboard */,
@@ -229,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				904BA4E5229BC5B200E6C313 /* ArrayTestViewController.m in Sources */,
+				908743E0229CC93E00D5D51B /* NotificationTestViewController.m in Sources */,
 				90A69B982296765700102C95 /* NSObject+TFDeallocSafe.m in Sources */,
 				90A69B9A2296765700102C95 /* NSMutableArray+TFCrashSafe.m in Sources */,
 				90A69B9C2296765700102C95 /* NSString+TFCrashSafe.m in Sources */,
@@ -389,6 +395,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TFCrashSafeKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,6 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TFCrashSafeKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

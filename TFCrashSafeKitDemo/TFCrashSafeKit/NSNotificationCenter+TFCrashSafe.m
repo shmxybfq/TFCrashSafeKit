@@ -18,9 +18,28 @@
 
 +(void)useSafe_NSNotificationCenter_TFCrashSafe{
     Class cls = [NSNotificationCenter class];
+    
+    SEL deallocOriginSel = NSSelectorFromString(@"dealloc");
+    SEL deallocToSel = NSSelectorFromString(@"tfsafe_deallocNotificationCenter");
+    Class clsObj = [NSObject class];
+    [clsObj tf_instanceMethodExchange:deallocOriginSel
+                           toClass:[self class]
+                             toSel:deallocToSel];
+    
     [cls tf_instanceMethodExchange:@selector(addObserver:selector:name:object:)
                            toClass:[self class]
                              toSel:@selector(tfsafe_addObserver:selector:name:object:)];
+}
+
+-(void)tfsafe_deallocNotificationCenter{
+    if ([[UIDevice currentDevice].systemVersion floatValue] <= 9.0) {
+        NSString *address = [NSString stringWithFormat:@"%p",self];
+        if ([self.instanceAddressPool containsObject:address]) {
+            [self.instanceAddressPool removeObject:address];
+            [[NSNotificationCenter defaultCenter]removeObserver:self];
+        }
+    }
+    [self tfsafe_deallocNotificationCenter];
 }
 
 tf_synthesize_category_property_retain(notificationPool, setNotificationPool);
@@ -57,15 +76,4 @@ tf_synthesize_category_property_retain(instanceAddressPool, setInstanceAddressPo
         NSLog(@"通知添加失败");
     }
 }
-
--(void)do_dealloc{
-    if ([[UIDevice currentDevice].systemVersion floatValue] <= 9.0) {
-        NSString *address = [NSString stringWithFormat:@"%p",self];
-        if ([self.instanceAddressPool containsObject:address]) {
-            [self.instanceAddressPool removeObject:address];
-            [[NSNotificationCenter defaultCenter]removeObserver:self];
-        }
-    }
-}
-
 @end

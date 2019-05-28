@@ -25,6 +25,12 @@
 +(void)useSafe_NSObject_TFKVOSafe{
     
     Class cls = [NSObject class];
+    
+    SEL deallocOriginSel = NSSelectorFromString(@"dealloc");
+    [cls tf_instanceMethodExchange:deallocOriginSel
+                           toClass:[self class]
+                             toSel:@selector(tfsafe_deallocKvo)];
+    
     [cls tf_instanceMethodExchange:@selector(addObserver:forKeyPath:options:context:)
                            toClass:[self class]
                              toSel:@selector(tfsafe_addObserver:forKeyPath:options:context:)];
@@ -36,7 +42,19 @@
     [cls tf_instanceMethodExchange:@selector(removeObserver:forKeyPath:context:)
                            toClass:[self class]
                              toSel:@selector(tfsafe_removeObserver:forKeyPath:context:)];
-    
+}
+
+-(void)tfsafe_deallocKvo{
+    if (self.observedPool) {
+        NSArray *observedPoolKeys = self.observedPool.allKeys;
+        if (observedPoolKeys && observedPoolKeys.count > 0) {
+            for (NSString *key in observedPoolKeys) {
+                TFKVOSafeContainer *container = [self.observedPool objectForKey:key];
+                [self removeObserver:container.target forKeyPath:container.path];
+            }
+        }
+    }
+    [self tfsafe_deallocKvo];
 }
 
 tf_synthesize_category_property_retain(observedPool, setObservedPool);
@@ -54,13 +72,16 @@ tf_synthesize_category_property_retain(observedPool, setObservedPool);
 }
 
 -(BOOL)tf_kvoRecorded:(id)observed target:(id)target path:(NSString *)path{
-    if (self.observedPool == nil)self.observedPool = [[NSMutableDictionary alloc]init];
+    if (self.observedPool == nil) return NO;
     NSString *key = tf_getKvoKey(observed, target, path);
-    return [self.observedPool objectForKey:key];
+    if ([self.observedPool objectForKey:key]) {
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)tf_removeKvoRecorded:(id)observed target:(id)target path:(NSString *)path{
-    if (self.observedPool == nil)self.observedPool = [[NSMutableDictionary alloc]init];
+    if (self.observedPool == nil) return NO;
     NSString *key = tf_getKvoKey(observed, target, path);
     if ([self tf_kvoRecorded:observed target:target path:path]) {
         [self.observedPool removeObjectForKey:key];
@@ -88,7 +109,7 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
 }
 
 -(void)tfsafe_removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath{
-    if (observer && keyPath) {
+    if (observer && keyPath && self.observedPool) {
         BOOL added = [self tf_kvoRecorded:self target:observer path:keyPath];
         if (added) {
             [self tfsafe_removeObserver:observer forKeyPath:keyPath];
@@ -98,7 +119,7 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
 }
 
 -(void)tfsafe_removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(void *)context{
-    if (observer && keyPath) {
+    if (observer && keyPath && self.observedPool) {
         BOOL added = [self tf_kvoRecorded:self target:observer path:keyPath];
         if (added) {
             [self tfsafe_removeObserver:observer forKeyPath:keyPath];
@@ -107,15 +128,6 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
     }
 }
 
--(void)do_dealloc_TFKVOSafe{
-    NSArray *observedPoolKeys = self.observedPool.allKeys;
-    if (observedPoolKeys && observedPoolKeys.count > 0) {
-        for (NSString *key in observedPoolKeys) {
-            TFKVOSafeContainer *container = [self.observedPool objectForKey:key];
-            [self removeObserver:container.target forKeyPath:container.path];
-        }
-    }
-}
 
 @end
 

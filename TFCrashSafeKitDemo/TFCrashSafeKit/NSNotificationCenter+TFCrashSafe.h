@@ -14,7 +14,6 @@
 @property(nonatomic,strong)NSMutableArray <NSString *>*instanceAddressPool;
 
 +(void)useSafe_NSNotificationCenter_TFCrashSafe;
--(void)do_dealloc;
 
 @end
 

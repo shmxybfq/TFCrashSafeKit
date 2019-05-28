@@ -49,7 +49,7 @@
 }
 
 void forwardingImp(id self, SEL _cmd){
-    
+    NSLog(@"...........:%@:%s",self,_cmd);
 }
 
 @end

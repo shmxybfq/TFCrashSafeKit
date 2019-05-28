@@ -12,7 +12,6 @@
 #import "NSMutableArray+TFCrashSafe.h"
 #import "NSMutableDictionary+TFCrashSafe.h"
 #import "NSNotificationCenter+TFCrashSafe.h"
-#import "NSObject+TFDeallocSafe.h"
 #import "NSObject+TFKVOSafe.h"
 #import "NSObject+UnrecognizedSelector.h"
 #import "NSString+TFCrashSafe.h"

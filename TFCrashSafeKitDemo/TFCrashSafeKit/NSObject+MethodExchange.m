@@ -94,7 +94,9 @@ static inline void tf_methodExchangeRecord(Class cls,SEL originSel){
 }
 static inline BOOL tf_methodHasExchanged(Class cls,SEL originSel){
     if (_methodExchangeRecordPool) {
-        return [_methodExchangeRecordPool objectForKey:cls];
+        if ([_methodExchangeRecordPool objectForKey:cls]) {
+            return YES;
+        }
     }
     return NO;
 }

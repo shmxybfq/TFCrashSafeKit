@@ -9,13 +9,19 @@
 #ifndef TFCrashSafeKitConst_h
 #define TFCrashSafeKitConst_h
 
+typedef NS_ENUM(NSInteger,TFCrashReportType) {
+    TFCrashReportTypeNone = 0,
+    TFCrashReportTypeCustemReport ,
+    TFCrashReportTypeSystemException ,
+};
+
 typedef NS_OPTIONS(NSUInteger, TFCrashSafeType) {
     TFCrashSafeTypeAll = 1 << 0,
     TFCrashSafeTypeNone = 1 << 1,
-    TFCrashSafeTypeContainer = 1 << 2,
-    TFCrashSafeTypeKvo = 1 << 3,
-    TFCrashSafeTypeTimer = 1 << 4,
-    TFCrashSafeTypeUIThread = 1 << 5,
+    TFCrashSafeTypeKvo = 1 << 2,
+    TFCrashSafeTypeTimer = 1 << 3,
+    TFCrashSafeTypeUIThread = 1 << 4,
+    TFCrashSafeTypeContainer = 1 << 5,
     TFCrashSafeTypeNotification = 1 << 6,
 };
 

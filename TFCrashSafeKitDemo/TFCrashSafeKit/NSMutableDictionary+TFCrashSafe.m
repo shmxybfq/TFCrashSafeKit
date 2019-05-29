@@ -8,7 +8,7 @@
 
 #import "NSMutableDictionary+TFCrashSafe.h"
 #import <objc/runtime.h>
-#import "TFCrashSafeKitManager.h"
+#import "TFCrashSafeKit.h"
 #import "NSObject+MethodExchange.h"
 
 @implementation NSMutableDictionary (TFCrashSafe)
@@ -45,13 +45,10 @@
 }
 
 -(void)tfsafe_setObject:(id)anObject forKey:(id<NSCopying>)aKey{
-    NSLog(@"设置fuc:%s:%@:%@",__func__,anObject,aKey);
     if (anObject && aKey) {
-        NSLog(@"设置成功");
         [self tfsafe_setObject:anObject forKey:aKey];
     }else{
-        NSLog(@"设置失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_setObject:anObject forKey:aKey];
             } @catch (NSException *exception) {
@@ -68,7 +65,7 @@
         [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
     }else{
         NSLog(@"下标设置失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
             } @catch (NSException *exception) {
@@ -85,7 +82,7 @@
         [self tfsafe_setDictionary:otherDictionary];
     }else{
         NSLog(@"字典设置失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_setDictionary:otherDictionary];
             } @catch (NSException *exception) {
@@ -102,7 +99,7 @@
         [self tfsafe_addEntriesFromDictionary:otherDictionary];
     }else{
         NSLog(@"字典添加失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_addEntriesFromDictionary:otherDictionary];
             } @catch (NSException *exception) {
@@ -120,7 +117,7 @@
         [self tfsafe_removeObjectForKey:aKey];
     }else{
         NSLog(@"字典移除失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_removeObjectForKey:aKey];
             } @catch (NSException *exception) {
@@ -134,7 +131,7 @@
     if (keyArray && [keyArray isKindOfClass:[NSArray class]]) {
         [self tfsafe_removeObjectsForKeys:keyArray];
     }else{
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_removeObjectsForKeys:keyArray];
             } @catch (NSException *exception) {

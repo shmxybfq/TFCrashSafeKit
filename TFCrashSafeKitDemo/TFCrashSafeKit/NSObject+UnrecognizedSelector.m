@@ -8,7 +8,6 @@
 
 #import "NSObject+UnrecognizedSelector.h"
 #import <objc/runtime.h>
-#import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"
 
 @class TFUnrecognizedSelectorForwarding;

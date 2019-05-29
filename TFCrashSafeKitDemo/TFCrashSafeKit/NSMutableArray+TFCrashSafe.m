@@ -8,8 +8,10 @@
 
 #import "NSMutableArray+TFCrashSafe.h"
 #import <objc/runtime.h>
-#import "TFCrashSafeKitManager.h"
+#import "TFCrashSafeKit.h"
 #import "NSObject+MethodExchange.h"
+#import "TFCrashSafeKit+CrashAction.h"
+
 @implementation NSMutableArray (TFCrashSafe)
 
 +(void)useSafe_NSMutableArray_TFCrashSafe{
@@ -45,43 +47,23 @@
 
 
 - (id)tfsafe_objectAtIndexM:(NSUInteger)index {
-    NSLog(@"AAA:%@",@(index));
     if (index >= 0 && index < self.count) {
-        NSLog(@"BBB");
         return [self tfsafe_objectAtIndexM:index];
     }else{
-        NSLog(@"CCC");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
-            @try {
-                [self tfsafe_objectAtIndexM:index];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {
-                return nil;
-            }
-        }
+        return [TFCrashSafeKit tfCrashActionNSMutableArray:self
+                                                     index:index
+                                                      type:TFCrashTypeNSMutableArrayGet];
     }
-    return nil;
 }
 
 - (id)tfsafe_objectAtIndexedSubscriptM:(NSUInteger)index {
-    NSLog(@"DDD:%@",@(index));
     if (index >= 0 && index < self.count) {
-        NSLog(@"EEE");
         return [self tfsafe_objectAtIndexedSubscriptM:index];
     }else{
-        NSLog(@"FFF");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
-            @try {
-                [self tfsafe_objectAtIndexedSubscriptM:index];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {
-                return nil;
-            }
-        }
+        return [TFCrashSafeKit tfCrashActionNSMutableArray:self
+                                                     index:index
+                                                      type:TFCrashTypeNSMutableArrayGetSubscript];
     }
-    return nil;
 }
 
 
@@ -92,7 +74,7 @@
         [self tfsafe_addObject:anObject];
     }else{
         NSLog(@"添加失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_addObject:anObject];
             } @catch (NSException *exception) {
@@ -109,7 +91,7 @@
         [self tfsafe_insertObject:anObject atIndex:index];
     }else{
         NSLog(@"插入失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_insertObject:anObject atIndex:index];
             } @catch (NSException *exception) {
@@ -126,7 +108,7 @@
         [self tfsafe_setObject:anObject atIndexedSubscript:index];
     }else{
         NSLog(@"下标添加失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_setObject:anObject atIndexedSubscript:index];
             } @catch (NSException *exception) {
@@ -143,7 +125,7 @@
         [self tfsafe_removeObjectAtIndex:index];
     }else{
         NSLog(@"移除下标失败");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].collectException) {
             @try {
                 [self tfsafe_removeObjectAtIndex:index];
             } @catch (NSException *exception) {

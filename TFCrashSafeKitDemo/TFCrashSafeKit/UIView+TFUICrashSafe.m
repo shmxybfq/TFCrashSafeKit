@@ -9,7 +9,6 @@
 #import "UIView+TFUICrashSafe.h"
 #import <objc/runtime.h>
 #import "TFCrashSafeKitConst.h"
-#import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"
 
 @implementation UIView (TFUICrashSafe)

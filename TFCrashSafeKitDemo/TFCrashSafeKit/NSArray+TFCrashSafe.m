@@ -8,8 +8,10 @@
 
 #import "NSArray+TFCrashSafe.h"
 #import <objc/runtime.h>
-#import "TFCrashSafeKitManager.h"
+#import "TFCrashSafeKit.h"
+#import "TFCrashSafeKit+CrashAction.h"
 #import "NSObject+MethodExchange.h"
+
 @implementation NSArray (TFCrashSafe)
 
 +(void)useSafe_NSArray_TFCrashSafe{
@@ -41,123 +43,46 @@
     [arraysIM tf_instanceMethodExchange:@selector(objectAtIndexedSubscript:)
                                 toClass:[self class]
                                   toSel:@selector(tfsafe_objectAtIndexedSubscriptIM:)];
-    
-    
-//    Class arrays0 = NSClassFromString(@"__NSArray0");
-//
-//    return;
-//    
-//    [TFMethodExchange tf_instanceMethodExchange:__NSArray0
-//                                      originSel:NSSelectorFromString(@"objectAtIndex:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndex:")];
-//    [TFMethodExchange tf_instanceMethodExchange:__NSArray0
-//                                      originSel:NSSelectorFromString(@"objectAtIndexedSubscript:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndexedSubscript:")];
-//    
-//    [TFMethodExchange tf_instanceMethodExchange:__NSArrayI
-//                                      originSel:NSSelectorFromString(@"objectAtIndex:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndex:")];
-//    [TFMethodExchange tf_instanceMethodExchange:__NSArrayI
-//                                      originSel:NSSelectorFromString(@"objectAtIndexedSubscript:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndexedSubscript:")];
-//    
-//    [TFMethodExchange tf_instanceMethodExchange:__NSArrayM
-//                                      originSel:NSSelectorFromString(@"objectAtIndex:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndex:")];
-//    [TFMethodExchange tf_instanceMethodExchange:__NSArrayM
-//                                      originSel:NSSelectorFromString(@"objectAtIndexedSubscript:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndexedSubscript:")];
-//    
-//    [TFMethodExchange tf_instanceMethodExchange:__NSSingleObjectArrayI
-//                                      originSel:NSSelectorFromString(@"objectAtIndex:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndex:")];
-//    [TFMethodExchange tf_instanceMethodExchange:__NSSingleObjectArrayI
-//                                      originSel:NSSelectorFromString(@"objectAtIndexedSubscript:")
-//                                          toSel:NSSelectorFromString(@"tfsafe_objectAtIndexedSubscript:")];
 }
 
 
 - (id)tfsafe_objectAtIndex0:(NSUInteger)index {
-    NSLog(@"AAA:%@",@(index));
     if (index >= 0 && index < self.count) {
-        NSLog(@"BBB");
         return [self tfsafe_objectAtIndex0:index];
     }else{
-        NSLog(@"CCC");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
-            @try {
-                [self tfsafe_objectAtIndex0:index];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {
-                return nil;
-            }
-        }
+        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+        return value;
     }
-    return nil;
 }
 
 
 - (id)tfsafe_objectAtIndex1:(NSUInteger)index {
-    NSLog(@"AAA:%@",@(index));
     if (index >= 0 && index < self.count) {
-        NSLog(@"BBB");
         return [self tfsafe_objectAtIndex1:index];
     }else{
-        NSLog(@"CCC");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
-            @try {
-                [self tfsafe_objectAtIndex1:index];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {
-                return nil;
-            }
-        }
+        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+        return value;
     }
-    return nil;
 }
 
 
 - (id)tfsafe_objectAtIndexIM:(NSUInteger)index {
-    NSLog(@"AAA:%@",@(index));
     if (index >= 0 && index < self.count) {
-        NSLog(@"BBB");
         return [self tfsafe_objectAtIndexIM:index];
     }else{
-        NSLog(@"CCC");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
-            @try {
-                [self tfsafe_objectAtIndexIM:index];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {
-                return nil;
-            }
-        }
+        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+        return value;
     }
-    return nil;
 }
 
 
 - (id)tfsafe_objectAtIndexedSubscriptIM:(NSUInteger)index {
-    NSLog(@"DDD:%@",@(index));
     if (index >= 0 && index < self.count) {
-        NSLog(@"EEE");
         return [self tfsafe_objectAtIndexedSubscriptIM:index];
     }else{
-        NSLog(@"FFF");
-        if ([TFCrashSafeKitManager shareInstance].collectException) {
-            @try {
-                [self tfsafe_objectAtIndexedSubscriptIM:index];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {
-                return nil;
-            }
-        }
+        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGetSubscript];
+        return value;
     }
-    return nil;
 }
 
 

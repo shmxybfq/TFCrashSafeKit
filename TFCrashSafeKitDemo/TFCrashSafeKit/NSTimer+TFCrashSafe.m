@@ -9,7 +9,6 @@
 #import "NSTimer+TFCrashSafe.h"
 #import <objc/runtime.h>
 #import "TFCrashSafeKitConst.h"
-#import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"
 
 @implementation NSTimer (TFCrashSafe)

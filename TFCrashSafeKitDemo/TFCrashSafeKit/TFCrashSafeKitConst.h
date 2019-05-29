@@ -9,13 +9,19 @@
 #ifndef TFCrashSafeKitConst_h
 #define TFCrashSafeKitConst_h
 
-typedef NS_ENUM(NSInteger,TFCrashReportType) {
-    TFCrashReportTypeNone = 0,
-    TFCrashReportTypeCustemReport ,
-    TFCrashReportTypeSystemException ,
+typedef NS_ENUM(NSInteger,TFCrashType) {
+    TFCrashTypeNone = 0,
+    TFCrashTypeNSArrayGet,
+    TFCrashTypeNSArrayGetSubscript,
+    TFCrashTypeNSMutableArrayGet,
+    TFCrashTypeNSMutableArrayGetSubscript,
+    TFCrashTypeNSMutableArrayAdd,
+    TFCrashTypeNSMutableArrayInsert,
+    TFCrashTypeNSMutableArraySet,
+    
 };
 
-typedef NS_OPTIONS(NSUInteger, TFCrashSafeType) {
+typedef NS_OPTIONS(NSUInteger, TFProtectType) {
     TFCrashSafeTypeAll = 1 << 0,
     TFCrashSafeTypeNone = 1 << 1,
     TFCrashSafeTypeKvo = 1 << 2,

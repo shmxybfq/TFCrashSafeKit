@@ -10,7 +10,6 @@
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
 #import "TFCrashSafeKitConst.h"
-#import "TFCrashSafeKitManager.h"
 #import "NSObject+MethodExchange.h"
 
 @implementation NSNotificationCenter (TFCrashSafe)

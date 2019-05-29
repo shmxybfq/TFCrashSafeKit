@@ -1,16 +1,26 @@
 //
 //  TFCrashSafeKit.h
-//  TFCrashSafeKit
+//  TFCrashSafeKitDemo
 //
-//  Created by zhutaofeng on 2019/5/23.
+//  Created by zhutaofeng on 2019/5/29.
 //  Copyright © 2019 ztf. All rights reserved.
 //
 
-#ifndef TFCrashSafeKit_h
-#define TFCrashSafeKit_h
-
-#import "TFCrashSafeKitManager.h"
+#import <Foundation/Foundation.h>
 
 
+@protocol TFCrashSafeKitDelegate <NSObject>
 
-#endif /* TFCrashSafeKit_h */
+-(NSString *)custemReportArray:(NSArray *)array index:(NSInteger)index;
+
+@end
+
+@interface TFCrashSafeKit : NSObject
+
+@property(nonatomic,assign)BOOL collectException;
+@property(nonatomic,  weak)id<TFCrashSafeKitDelegate>delegate;
+
++(instancetype)shareInstance;
+
+@end
+

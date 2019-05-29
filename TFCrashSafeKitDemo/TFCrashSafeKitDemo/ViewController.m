@@ -31,6 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [NSArray useSafe_NSArray_TFCrashSafe];
+    NSArray *array0 = @[];
+    [array0 objectAtIndex:10];
+    
+    return;
     [NSObject useSafe_NSObject_UnrecognizedSelector];
     [self performSelector:@selector(xxx:tt:hh:gg:nn:) withObject:nil];
     
@@ -66,6 +72,8 @@
     self.kvostring = @"1";
 //    NotificationTestViewController *controller = [[NotificationTestViewController alloc]init];
 //    [self presentViewController:controller animated:YES completion:nil];
+    
+    
 }
 
 

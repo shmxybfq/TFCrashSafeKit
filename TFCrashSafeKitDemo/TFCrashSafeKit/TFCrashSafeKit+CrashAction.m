@@ -12,10 +12,9 @@
 
 +(id)tfCrashActionNSArray:(NSArray *)array index:(NSInteger)index type:(TFCrashType)type{
     TFCrashSafeKit *kit = [TFCrashSafeKit shareInstance];
-    if (kit.delegate && [kit.delegate respondsToSelector:@selector(custemReportArray:index:)]) {
-        NSString *report = [kit.delegate custemReportArray:array index:index];
+    if (kit.delegate && [kit.delegate respondsToSelector:@selector(custemReportGet:index:type:)]) {
+        NSString *report = [kit.delegate custemReportGet:array index:index type:type];
         if (report) {
-            
             
             
         }
@@ -24,6 +23,14 @@
 }
 
 +(id)tfCrashActionNSMutableArray:(NSMutableArray *)array index:(NSInteger)index type:(TFCrashType)type{
+    TFCrashSafeKit *kit = [TFCrashSafeKit shareInstance];
+    if (kit.delegate && [kit.delegate respondsToSelector:@selector(custemReportGet:index:type:)]) {
+        NSString *report = [kit.delegate custemReportGet:array index:index type:type];
+        if (report) {
+            
+            
+        }
+    }
     return nil;
 }
 

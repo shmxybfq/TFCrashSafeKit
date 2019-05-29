@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "TFCrashSafeKit.h"
 #import "NSObject+MethodExchange.h"
+#import "TFCrashSafeKit+CrashAction.h"
 
 @implementation NSMutableDictionary (TFCrashSafe)
 
@@ -23,7 +24,7 @@
     [dicM tf_instanceMethodExchange:@selector(setObject:forKeyedSubscript:)
                             toClass:[self class]
                               toSel:@selector(tfsafe_setObject:forKeyedSubscript:)];
-
+    
     //【setDictionary】底层循环调用【setObject:forKey:】
     [dicM tf_instanceMethodExchange:@selector(setDictionary:)
                             toClass:[self class]
@@ -33,11 +34,11 @@
     [dicM tf_instanceMethodExchange:@selector(addEntriesFromDictionary:)
                             toClass:[self class]
                               toSel:@selector(tfsafe_addEntriesFromDictionary:)];
-
+    
     [dicM tf_instanceMethodExchange:@selector(removeObjectForKey:)
                             toClass:[self class]
                               toSel:@selector(tfsafe_removeObjectForKey:)];
-
+    
     [dicM tf_instanceMethodExchange:@selector(removeObjectsForKeys:)
                             toClass:[self class]
                               toSel:@selector(tfsafe_removeObjectsForKeys:)];
@@ -48,82 +49,52 @@
     if (anObject && aKey) {
         [self tfsafe_setObject:anObject forKey:aKey];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
-            @try {
-                [self tfsafe_setObject:anObject forKey:aKey];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {}
-        }
+        [TFCrashSafeKit tfCrashActionNSMutableDictionary:self
+                                               setObject:anObject
+                                                  forKey:aKey
+                                                    type:TFCrashTypeNSMutableDictionarySet];
     }
 }
 
 - (void)tfsafe_setObject:(id)anObject forKeyedSubscript:(id < NSCopying >)aKey{
-    NSLog(@"下标设置fuc:%s:%@:%@",__func__,anObject,aKey);
     if (anObject && aKey) {
-        NSLog(@"下标设置成功");
         [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
     }else{
-        NSLog(@"下标设置失败");
-        if ([TFCrashSafeKit shareInstance].collectException) {
-            @try {
-                [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {}
-        }
+        [TFCrashSafeKit tfCrashActionNSMutableDictionary:self
+                                               setObject:anObject
+                                       forKeyedSubscript:aKey
+                                                    type:TFCrashTypeNSMutableDictionarySetSubscript];
     }
 }
 
 - (void)tfsafe_setDictionary:(NSDictionary *)otherDictionary{
-    NSLog(@"字典设置fuc:%s:%@",__func__,otherDictionary);
     if (otherDictionary && [otherDictionary isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"字典设置成功");
         [self tfsafe_setDictionary:otherDictionary];
     }else{
-        NSLog(@"字典设置失败");
-        if ([TFCrashSafeKit shareInstance].collectException) {
-            @try {
-                [self tfsafe_setDictionary:otherDictionary];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {}
-        }
+        [TFCrashSafeKit tfCrashActionNSMutableDictionary:self
+                                           setDictionary:otherDictionary
+                                                    type:TFCrashTypeNSMutableDictionarySetDictionary];
     }
 }
 
 -(void)tfsafe_addEntriesFromDictionary:(NSDictionary *)otherDictionary{
-    NSLog(@"字典添加fuc:%s:%@",__func__,otherDictionary);
     if (otherDictionary && [otherDictionary isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"字典添加成功");
         [self tfsafe_addEntriesFromDictionary:otherDictionary];
     }else{
-        NSLog(@"字典添加失败");
-        if ([TFCrashSafeKit shareInstance].collectException) {
-            @try {
-                [self tfsafe_addEntriesFromDictionary:otherDictionary];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {}
-        }
+        [TFCrashSafeKit tfCrashActionNSMutableDictionary:self
+                                addEntriesFromDictionary:otherDictionary
+                                                    type:TFCrashTypeNSMutableDictionaryAddDictionary];
     }
 }
 
 
 -(void)tfsafe_removeObjectForKey:(id)aKey{
-    NSLog(@"字典移除fuc:%s:%@",__func__,aKey);
     if (aKey) {
-        NSLog(@"字典移除成功");
         [self tfsafe_removeObjectForKey:aKey];
     }else{
-        NSLog(@"字典移除失败");
-        if ([TFCrashSafeKit shareInstance].collectException) {
-            @try {
-                [self tfsafe_removeObjectForKey:aKey];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {}
-        }
+        [TFCrashSafeKit tfCrashActionNSMutableDictionary:self
+                                      removeObjectForKey:aKey
+                                                    type:TFCrashTypeNSMutableDictionaryRemove];
     }
 }
 
@@ -131,13 +102,9 @@
     if (keyArray && [keyArray isKindOfClass:[NSArray class]]) {
         [self tfsafe_removeObjectsForKeys:keyArray];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
-            @try {
-                [self tfsafe_removeObjectsForKeys:keyArray];
-            } @catch (NSException *exception) {
-                NSLog(@">>>>:%@",exception);
-            } @finally {}
-        }
+        [TFCrashSafeKit tfCrashActionNSMutableDictionary:self
+                                    removeObjectsForKeys:keyArray
+                                                    type:TFCrashTypeNSMutableDictionaryRemoveForKeys];
     }
 }
 

@@ -8,8 +8,10 @@
 
 #import "NSObject+TFKVOSafe.h"
 #import <objc/runtime.h>
+#import "TFCrashSafeKit.h"
 #import "TFCrashSafeKitConst.h"
 #import "NSObject+MethodExchange.h"
+#import "TFCrashSafeKit+CrashAction.h"
 
 @implementation NSObject (TFKVOSafe)
 @dynamic observedPool;
@@ -96,34 +98,67 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
     return key;
 }
 
-
 -(void)tfsafe_addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context{
     if (observer && keyPath) {
         BOOL added = [self tf_kvoRecorded:self target:observer path:keyPath];
         if (!added) {
             [self tfsafe_addObserver:observer forKeyPath:keyPath options:options context:context];
             [self tf_kvoRecord:self target:observer path:keyPath];
+        }else{
+            [TFCrashSafeKit tfCrashActionKVO:self
+                                 addObserver:observer
+                                  forKeyPath:keyPath
+                                     options:options
+                                     context:context
+                                        type:TFCrashTypeKVOAddRepeat];
         }
+    }else{
+        [TFCrashSafeKit tfCrashActionKVO:self
+                             addObserver:observer
+                              forKeyPath:keyPath
+                                 options:options
+                                 context:context
+                                    type:TFCrashTypeKVOAddFail];
     }
 }
 
 -(void)tfsafe_removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath{
-    if (observer && keyPath && self.observedPool) {
+    if (observer && keyPath) {
         BOOL added = [self tf_kvoRecorded:self target:observer path:keyPath];
         if (added) {
             [self tfsafe_removeObserver:observer forKeyPath:keyPath];
             [self tf_removeKvoRecorded:self target:observer path:keyPath];
+        }else{
+            [TFCrashSafeKit tfCrashActionKVO:self
+                              removeObserver:observer
+                                  forKeyPath:keyPath
+                                        type:TFCrashTypeKVORemoveMore];
         }
+    }else{
+        [TFCrashSafeKit tfCrashActionKVO:self
+                          removeObserver:observer
+                              forKeyPath:keyPath
+                                    type:TFCrashTypeKVORemoveFail];
     }
 }
 
 -(void)tfsafe_removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(void *)context{
-    if (observer && keyPath && self.observedPool) {
+    if (observer && keyPath) {
         BOOL added = [self tf_kvoRecorded:self target:observer path:keyPath];
         if (added) {
             [self tfsafe_removeObserver:observer forKeyPath:keyPath];
             [self tf_removeKvoRecorded:self target:observer path:keyPath];
+        }else{
+            [TFCrashSafeKit tfCrashActionKVO:self
+                              removeObserver:observer
+                                  forKeyPath:keyPath
+                                        type:TFCrashTypeKVORemoveMore];
         }
+    }else{
+        [TFCrashSafeKit tfCrashActionKVO:self
+                          removeObserver:observer
+                              forKeyPath:keyPath
+                                    type:TFCrashTypeKVORemoveFail];
     }
 }
 

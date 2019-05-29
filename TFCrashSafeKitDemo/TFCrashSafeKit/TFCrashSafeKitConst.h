@@ -18,6 +18,20 @@ typedef NS_ENUM(NSInteger,TFCrashType) {
     TFCrashTypeNSMutableArrayAdd,
     TFCrashTypeNSMutableArrayInsert,
     TFCrashTypeNSMutableArraySet,
+    TFCrashTypeNSMutableArrayRemove,
+    TFCrashTypeNSMutableDictionarySet,
+    TFCrashTypeNSMutableDictionarySetSubscript,
+    TFCrashTypeNSMutableDictionarySetDictionary,
+    TFCrashTypeNSMutableDictionaryAddDictionary,
+    TFCrashTypeNSMutableDictionaryRemove,
+    TFCrashTypeNSMutableDictionaryRemoveForKeys,
+    TFCrashTypeNSNotificationCenterAddFail,
+    TFCrashTypeNSNotificationCenterAddRepeat,
+    TFCrashTypeKVOAddFail,
+    TFCrashTypeKVOAddRepeat,
+    TFCrashTypeKVORemoveFail,
+    TFCrashTypeKVORemoveMore,
+    
     
 };
 

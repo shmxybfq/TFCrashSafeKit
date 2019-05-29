@@ -13,6 +13,8 @@
 
 +(BOOL)tf_instanceMethodExchange:(SEL)originSel toClass:(Class)toClass  toSel:(SEL)toSel;
 
++(BOOL)tf_classMethodExchange:(SEL)originSel toClass:(Class)toClass  toSel:(SEL)toSel;
+
 @end
 
 

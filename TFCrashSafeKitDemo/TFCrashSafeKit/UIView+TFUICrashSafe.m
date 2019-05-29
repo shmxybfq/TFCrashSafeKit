@@ -28,7 +28,6 @@
     [cls tf_instanceMethodExchange:@selector(setNeedsDisplayInRect:)
                            toClass:[self class]
                              toSel:@selector(tfsafe_setNeedsDisplayInRect:)];
-    
 }
 
 

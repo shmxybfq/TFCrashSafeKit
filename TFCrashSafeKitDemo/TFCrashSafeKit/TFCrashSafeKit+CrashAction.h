@@ -59,6 +59,15 @@
                    removeObjectsForKeys:(NSArray *)keyArray
                                    type:(TFCrashType)type;
 
+/* 可变和不可变字符串
+ */
++(void)tfCrashActionNSString:(NSString *)string substringFromIndex:(NSUInteger)from type:(TFCrashType)type;
++(void)tfCrashActionNSString:(NSString *)string substringToIndex:(NSUInteger)to type:(TFCrashType)type;
++(void)tfCrashActionNSString:(NSString *)string substringWithRange:(NSRange)range type:(TFCrashType)type;
++(void)tfCrashActionNSString:(NSString *)string characterAtIndex:(NSUInteger)index type:(TFCrashType)type;
++(void)tfCrashActionNSString:(NSString *)string substringWithRange9More:(NSRange)range type:(TFCrashType)type;
++(void)tfCrashActionNSString:(NSString *)string characterAtIndex9More:(NSUInteger)index type:(TFCrashType)type;
+
 
 /* 通知
  */
@@ -92,6 +101,7 @@
 /* 调用空方法
  */
 +(void)tfCrashActionUnrecognizedSelector:(id)obj selector:(SEL)aSelector type:(TFCrashType)type;
+
 
 
 @end

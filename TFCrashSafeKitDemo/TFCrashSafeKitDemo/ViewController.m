@@ -19,10 +19,13 @@
 #import "NotificationTestViewController.h"
 
 #import "NSNotificationCenter+TFCrashSafe.h"
+
+#import "NSString+TFCrashSafe.h"
 @interface ViewController ()
 
 @property(nonatomic,  copy)NSString *kvostring;
 
+@property(nonatomic,strong)NSObject *obj;
 @end
 
 @implementation ViewController
@@ -31,14 +34,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [NSTimer useSafe_NSTimer_TFCrashSafe];
+//    self.obj = [[NSObject alloc]init];
+//    static NSTimer *tm = nil;
+//    tm = [NSTimer timerWithTimeInterval:1 target:self.obj selector:@selector(ooo:) userInfo:nil repeats:YES];
+//    [[NSRunLoop currentRunLoop]addTimer:tm forMode:NSRunLoopCommonModes];
+//    [tm fire];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.obj = nil;
+//    });
     
-    [NSArray useSafe_NSArray_TFCrashSafe];
-    NSArray *array0 = @[];
-    [array0 objectAtIndex:10];
     
-    return;
-    [NSObject useSafe_NSObject_UnrecognizedSelector];
-    [self performSelector:@selector(xxx:tt:hh:gg:nn:) withObject:nil];
+//    NSLog(@"001");
+//    [NSString useSafe_NSString_TFCrashSafe];
+//    NSLog(@"002");
+//    NSString *str0 = @"abc";
+//    NSString *str1 = [NSString stringWithCString:"edf" encoding:NSUTF8StringEncoding];
+//    NSMutableString *str2 = [NSMutableString stringWithFormat:@"ghi"];
+//
+//    NSLog(@"003:%@:%@:%@",[str0 class],[str1 class],[str2 class]);
+//
+//    [str0 substringFromIndex:-1];
+//    [str1 substringFromIndex:-1];
+//    [str2 substringFromIndex:-1];
+//    [str0 substringToIndex:10];
+//    [str1 substringToIndex:10];
+//    [str2 substringToIndex:10];
+//    [str0 substringWithRange:NSMakeRange(10, 12)];
+//    [str1 substringWithRange:NSMakeRange(10, 12)];//NSTaggedPointerString
+//    [str2 substringWithRange:NSMakeRange(10, 12)];
+//    [str0 characterAtIndex:10];
+//    [str1 characterAtIndex:10];//NSTaggedPointerString
+//    [str2 characterAtIndex:10];
+
+    
+    
+    
+//    [NSArray useSafe_NSArray_TFCrashSafe];
+//    NSArray *array0 = @[];
+//    [array0 objectAtIndex:10];
+    
+//    return;
+//    [NSObject useSafe_NSObject_UnrecognizedSelector];
+//    [self performSelector:@selector(xxx:tt:hh:gg:nn:) withObject:nil];
     
     
 //    [NSObject useSafe_NSObject_TFKVOSafe];
@@ -53,6 +91,10 @@
 //    tt = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
 //    [NSNotificationCenter useSafe_NSNotificationCenter_TFCrashSafe];
     
+}
+
+-(void)ooo:(NSTimer *)timer{
+    NSLog(@"mmm");
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{

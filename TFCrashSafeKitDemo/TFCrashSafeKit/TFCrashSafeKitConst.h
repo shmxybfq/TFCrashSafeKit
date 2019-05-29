@@ -11,28 +11,38 @@
 
 typedef NS_ENUM(NSInteger,TFCrashType) {
     TFCrashTypeNone = 0,
+    
     TFCrashTypeNSArrayGet,
     TFCrashTypeNSArrayGetSubscript,
+    
     TFCrashTypeNSMutableArrayGet,
     TFCrashTypeNSMutableArrayGetSubscript,
     TFCrashTypeNSMutableArrayAdd,
     TFCrashTypeNSMutableArrayInsert,
     TFCrashTypeNSMutableArraySet,
     TFCrashTypeNSMutableArrayRemove,
+    
     TFCrashTypeNSMutableDictionarySet,
     TFCrashTypeNSMutableDictionarySetSubscript,
     TFCrashTypeNSMutableDictionarySetDictionary,
     TFCrashTypeNSMutableDictionaryAddDictionary,
     TFCrashTypeNSMutableDictionaryRemove,
     TFCrashTypeNSMutableDictionaryRemoveForKeys,
+    
     TFCrashTypeNSNotificationCenterAddFail,
     TFCrashTypeNSNotificationCenterAddRepeat,
+    
     TFCrashTypeKVOAddFail,
     TFCrashTypeKVOAddRepeat,
     TFCrashTypeKVORemoveFail,
     TFCrashTypeKVORemoveMore,
     
-    
+    TFCrashTypeNSStringFromIndex,
+    TFCrashTypeNSStringToIndex,
+    TFCrashTypeNSStringRange,
+    TFCrashTypeNSStringAtIndex,
+    TFCrashTypeNSStringRange9More,
+    TFCrashTypeNSStringAtIndex9More,
 };
 
 typedef NS_OPTIONS(NSUInteger, TFProtectType) {

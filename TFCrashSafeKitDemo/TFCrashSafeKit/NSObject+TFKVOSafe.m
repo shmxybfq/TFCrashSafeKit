@@ -105,20 +105,16 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
             [self tfsafe_addObserver:observer forKeyPath:keyPath options:options context:context];
             [self tf_kvoRecord:self target:observer path:keyPath];
         }else{
-            [TFCrashSafeKit tfCrashActionKVO:self
-                                 addObserver:observer
-                                  forKeyPath:keyPath
-                                     options:options
-                                     context:context
-                                        type:TFCrashTypeKVOAddRepeat];
+            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            if ([del respondsToSelector:@selector(tfCrashActionKVO:addObserver:forKeyPath:options:context:type:)]) {
+                [del tfCrashActionKVO:self addObserver:observer forKeyPath:keyPath options:options context:context type:TFCrashTypeKVOAddRepeat];
+            }
         }
     }else{
-        [TFCrashSafeKit tfCrashActionKVO:self
-                             addObserver:observer
-                              forKeyPath:keyPath
-                                 options:options
-                                 context:context
-                                    type:TFCrashTypeKVOAddFail];
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionKVO:addObserver:forKeyPath:options:context:type:)]) {
+            [del tfCrashActionKVO:self addObserver:observer forKeyPath:keyPath options:options context:context type:TFCrashTypeKVOAddFail];
+        }
     }
 }
 
@@ -129,16 +125,16 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
             [self tfsafe_removeObserver:observer forKeyPath:keyPath];
             [self tf_removeKvoRecorded:self target:observer path:keyPath];
         }else{
-            [TFCrashSafeKit tfCrashActionKVO:self
-                              removeObserver:observer
-                                  forKeyPath:keyPath
-                                        type:TFCrashTypeKVORemoveMore];
+            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:type:)]) {
+                [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath type:TFCrashTypeKVORemoveMore];
+            }
         }
     }else{
-        [TFCrashSafeKit tfCrashActionKVO:self
-                          removeObserver:observer
-                              forKeyPath:keyPath
-                                    type:TFCrashTypeKVORemoveFail];
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:type:)]) {
+            [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath type:TFCrashTypeKVORemoveFail];
+        }
     }
 }
 
@@ -149,16 +145,16 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
             [self tfsafe_removeObserver:observer forKeyPath:keyPath];
             [self tf_removeKvoRecorded:self target:observer path:keyPath];
         }else{
-            [TFCrashSafeKit tfCrashActionKVO:self
-                              removeObserver:observer
-                                  forKeyPath:keyPath
-                                        type:TFCrashTypeKVORemoveMore];
+            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:context:type:)]) {
+                [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath context:context type:TFCrashTypeKVORemoveMore];
+            }
         }
     }else{
-        [TFCrashSafeKit tfCrashActionKVO:self
-                          removeObserver:observer
-                              forKeyPath:keyPath
-                                    type:TFCrashTypeKVORemoveFail];
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:context:type:)]) {
+            [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath context:context type:TFCrashTypeKVORemoveFail];
+        }
     }
 }
 

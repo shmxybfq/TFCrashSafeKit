@@ -50,9 +50,13 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndex0:index];
     }else{
-        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
-        return value;
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+            return value;
+        }
     }
+    return nil;
 }
 
 
@@ -60,9 +64,13 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndex1:index];
     }else{
-        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
-        return value;
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+            return value;
+        }
     }
+    return nil;
 }
 
 
@@ -70,9 +78,13 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexIM:index];
     }else{
-        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
-        return value;
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+            return value;
+        }
     }
+    return nil;
 }
 
 
@@ -80,9 +92,13 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexedSubscriptIM:index];
     }else{
-        id value = [TFCrashSafeKit tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGetSubscript];
-        return value;
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGetSubscript];
+            return value;
+        }
     }
+    return nil;
 }
 
 

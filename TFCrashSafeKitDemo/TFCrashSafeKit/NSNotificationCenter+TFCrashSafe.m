@@ -33,6 +33,7 @@
 }
 
 -(void)tfsafe_deallocNotificationCenter{
+    
     if ([[UIDevice currentDevice].systemVersion floatValue] <= 9.0) {
         NSString *address = [NSString stringWithFormat:@"%p",self];
         if ([self.instanceAddressPool containsObject:address]) {
@@ -69,21 +70,16 @@ tf_synthesize_category_property_retain(instanceAddressPool, setInstanceAddressPo
             }
             [self.instanceAddressPool addObject:[NSString stringWithFormat:@"%p",observer]];
         }else{
-            [TFCrashSafeKit tfCrashActionNSNotificationCenter:self
-                                                  addObserver:observer
-                                                     selector:aSelector
-                                                         name:aName
-                                                       object:anObject
-                                                         type:TFCrashTypeNSNotificationCenterAddRepeat];
+            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
+                [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddRepeat];
+            }
         }
     }else{
-        [TFCrashSafeKit tfCrashActionNSNotificationCenter:self
-                                              addObserver:observer
-                                                 selector:aSelector
-                                                     name:aName
-                                                   object:anObject
-                                                     type:TFCrashTypeNSNotificationCenterAddFail];
-        
+        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
+           [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddFail];
+        }
     }
 }
 @end

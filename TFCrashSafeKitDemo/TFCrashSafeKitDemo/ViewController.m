@@ -21,7 +21,7 @@
 #import "NSNotificationCenter+TFCrashSafe.h"
 
 #import "NSString+TFCrashSafe.h"
-@interface ViewController ()
+@interface ViewController ()<UIScrollViewDelegate>
 
 @property(nonatomic,  copy)NSString *kvostring;
 

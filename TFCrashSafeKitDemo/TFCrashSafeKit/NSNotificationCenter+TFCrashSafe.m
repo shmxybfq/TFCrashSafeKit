@@ -81,8 +81,5 @@ tf_synthesize_category_property_retain(instanceAddressPool, setInstanceAddressPo
            [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddFail];
         }
     }
-    
-    
-    
 }
 @end

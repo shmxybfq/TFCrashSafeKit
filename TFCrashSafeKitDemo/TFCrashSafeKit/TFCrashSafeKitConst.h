@@ -43,6 +43,8 @@ typedef NS_ENUM(NSInteger,TFCrashType) {
     TFCrashTypeNSStringAtIndex,
     TFCrashTypeNSStringRange9More,
     TFCrashTypeNSStringAtIndex9More,
+    
+    TFCrashTypeUnrecognizedSelector,
 };
 
 typedef NS_OPTIONS(NSUInteger, TFProtectType) {
@@ -67,7 +69,7 @@ typedef NS_OPTIONS(NSUInteger, TFProtectType) {
  *  @param getter getter 方法名
  *  @param settter settter 方法名,不需要:
  */
-
+#import <objc/runtime.h>
 #ifndef tf_synthesize_category_property_retain
 #define tf_synthesize_category_property_retain(getter,settter) tf_synthesize_category_property(getter,settter,OBJC_ASSOCIATION_RETAIN_NONATOMIC,id)
 #endif

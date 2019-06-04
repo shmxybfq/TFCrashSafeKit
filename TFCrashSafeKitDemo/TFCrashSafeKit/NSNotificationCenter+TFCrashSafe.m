@@ -70,13 +70,13 @@ tf_synthesize_category_property_retain(instanceAddressPool, setInstanceAddressPo
             }
             [self.instanceAddressPool addObject:[NSString stringWithFormat:@"%p",observer]];
         }else{
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
                 [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddRepeat];
             }
         }
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
            [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddFail];
         }

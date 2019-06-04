@@ -9,7 +9,7 @@
 #import "TFCrashSafeKit+CrashAction.h"
 
 @implementation TFCrashSafeKit (CrashAction)
-@dynamic crashDelegate;
+//tf_synthesize_category_property_assign(crashDelegate, setCrashDelegate);
 
 /* 不可变数组
  */
@@ -157,10 +157,11 @@
 
 /* 调用空方法
  */
--(void)tfCrashActionUnrecognizedSelector:(id)obj selector:(SEL)aSelector type:(TFCrashType)type{
+-(id)tfCrashActionUnrecognizedSelector:(id)obj selector:(SEL)aSelector type:(TFCrashType)type{
     if ([self.delegate respondsToSelector:_cmd]) {
         
     }
+    return nil;
 }
 
 

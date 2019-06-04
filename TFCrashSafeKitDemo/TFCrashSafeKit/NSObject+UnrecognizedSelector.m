@@ -9,7 +9,7 @@
 #import "NSObject+UnrecognizedSelector.h"
 #import <objc/runtime.h>
 #import "NSObject+MethodExchange.h"
-
+#import "TFCrashSafeKit+CrashAction.h"
 @class TFUnrecognizedSelectorForwarding;
 @implementation NSObject (UnrecognizedSelector)
 
@@ -24,8 +24,15 @@
 -(id)tfsafe_forwardingTargetForSelector:(SEL)aSelector{
     id target = [self tfsafe_forwardingTargetForSelector:aSelector];
     if (!target) {
-        target = (id)[[TFUnrecognizedSelectorForwarding alloc]initWithSelector:aSelector];
+        id del = [TFCrashSafeKit shareInstance];
+        if ([del respondsToSelector:@selector(tfCrashActionUnrecognizedSelector:selector:type:)]) {
+            target = [del tfCrashActionUnrecognizedSelector:self selector:aSelector type:TFCrashTypeUnrecognizedSelector];
+            if (target) {
+                return target;
+            }
+        }
     }
+    target = (id)[[TFUnrecognizedSelectorForwarding alloc]initWithSelector:aSelector];
     return target;
 }
 

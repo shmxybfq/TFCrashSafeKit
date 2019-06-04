@@ -50,7 +50,7 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndex0:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
             id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
             return value;
@@ -64,7 +64,7 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndex1:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
             id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
             return value;
@@ -78,7 +78,7 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexIM:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
             id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
             return value;
@@ -92,7 +92,7 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexedSubscriptIM:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
             id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGetSubscript];
             return value;

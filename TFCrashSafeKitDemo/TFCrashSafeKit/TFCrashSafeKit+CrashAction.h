@@ -11,7 +11,7 @@
 
 @interface TFCrashSafeKit (CrashAction)
 
-@property(nonatomic,  weak)id<TFCrashSafeKitDelegate>crashDelegate;
+//@property(nonatomic,assign)id<TFCrashSafeKitDelegate>crashDelegate;
 
 @end
 

@@ -57,7 +57,7 @@
         return [self tfsafe_substringFromIndex:from];
     }else{
         if ([TFCrashSafeKit shareInstance].collectException) {
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringFromIndex:type:)]) {
                 return [del tfCrashActionNSString:self substringFromIndex:from type:TFCrashTypeNSStringFromIndex];
             }
@@ -71,7 +71,7 @@
         return [self tfsafe_substringToIndex:to];
     }else{
         if ([TFCrashSafeKit shareInstance].collectException) {
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringToIndex:type:)]) {
                 return [del tfCrashActionNSString:self substringToIndex:to type:TFCrashTypeNSStringToIndex];
             }
@@ -87,7 +87,7 @@
         return [self tfsafe_substringWithRange:range];
     }else{
         if ([TFCrashSafeKit shareInstance].collectException) {
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringWithRange:type:)]) {
                 return [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringToIndex];
             }
@@ -101,7 +101,7 @@
         return [self tfsafe_characterAtIndex:index];
     }else{
         if ([TFCrashSafeKit shareInstance].collectException) {
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:characterAtIndex:type:)]) {
                 return [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex];
             }
@@ -119,7 +119,7 @@
         return [self tfsafe_substringWithRange9More:range];
     }else{
         if ([TFCrashSafeKit shareInstance].collectException) {
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringWithRange:type:)]) {
                 return [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringRange9More];
             }
@@ -133,7 +133,7 @@
         return [self tfsafe_characterAtIndex9More:index];
     }else{
         if ([TFCrashSafeKit shareInstance].collectException) {
-            id del = [TFCrashSafeKit shareInstance].crashDelegate;
+            id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:characterAtIndex:type:)]) {
                 return [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex9More];
             }

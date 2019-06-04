@@ -50,7 +50,7 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexM:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableArray:index:type:)]) {
            return [del tfCrashActionNSMutableArray:self index:index type:TFCrashTypeNSMutableArrayGet];
         }
@@ -62,7 +62,7 @@
     if (index >= 0 && index < self.count) {
         return [self tfsafe_objectAtIndexedSubscriptM:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableArray:index:type:)]) {
             return [del tfCrashActionNSMutableArray:self index:index type:TFCrashTypeNSMutableArrayGetSubscript];
         }
@@ -74,7 +74,7 @@
     if (anObject) {
         [self tfsafe_addObject:anObject];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableArray:addObject:type:)]) {
             [del tfCrashActionNSMutableArray:self addObject:anObject type:TFCrashTypeNSMutableArrayAdd];
         }
@@ -85,7 +85,7 @@
     if (anObject && index >= 0 && index <= self.count) {
         [self tfsafe_insertObject:anObject atIndex:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableArray:insertObject:atIndex:type:)]) {
             [del tfCrashActionNSMutableArray:self insertObject:anObject atIndex:index type:TFCrashTypeNSMutableArrayInsert];
         }
@@ -96,7 +96,7 @@
     if (anObject && index >= 0 && index <= self.count) {
         [self tfsafe_setObject:anObject atIndexedSubscript:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableArray:setObject:atIndexedSubscript:type:)]) {
             [del tfCrashActionNSMutableArray:self setObject:anObject atIndexedSubscript:index type:TFCrashTypeNSMutableArraySet];
         }
@@ -107,7 +107,7 @@
     if (index >= 0 && index < self.count) {
         [self tfsafe_removeObjectAtIndex:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableArray:removeObjectAtIndex:type:)]) {
             [del tfCrashActionNSMutableArray:self removeObjectAtIndex:index type:TFCrashTypeNSMutableArrayRemove];
         }

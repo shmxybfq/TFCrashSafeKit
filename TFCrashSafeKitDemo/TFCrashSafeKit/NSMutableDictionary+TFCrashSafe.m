@@ -49,7 +49,7 @@
     if (anObject && aKey) {
         [self tfsafe_setObject:anObject forKey:aKey];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableDictionary:setObject:forKey:type:)]) {
             [del tfCrashActionNSMutableDictionary:self setObject:anObject forKey:aKey type:TFCrashTypeNSMutableDictionarySet];
         }
@@ -60,7 +60,7 @@
     if (anObject && aKey) {
         [self tfsafe_setObject:anObject forKeyedSubscript:aKey];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableDictionary:setObject:forKeyedSubscript:type:)]) {
             [del tfCrashActionNSMutableDictionary:self setObject:anObject forKeyedSubscript:aKey type:TFCrashTypeNSMutableDictionarySetSubscript];
         }
@@ -71,7 +71,7 @@
     if (otherDictionary && [otherDictionary isKindOfClass:[NSDictionary class]]) {
         [self tfsafe_setDictionary:otherDictionary];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableDictionary:setDictionary:type:)]) {
             [del tfCrashActionNSMutableDictionary:self setDictionary:otherDictionary type:TFCrashTypeNSMutableDictionarySetDictionary];
         }
@@ -82,7 +82,7 @@
     if (otherDictionary && [otherDictionary isKindOfClass:[NSDictionary class]]) {
         [self tfsafe_addEntriesFromDictionary:otherDictionary];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableDictionary:addEntriesFromDictionary:type:)]) {
             [del tfCrashActionNSMutableDictionary:self addEntriesFromDictionary:otherDictionary type:TFCrashTypeNSMutableDictionaryAddDictionary];
         }
@@ -94,7 +94,7 @@
     if (aKey) {
         [self tfsafe_removeObjectForKey:aKey];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableDictionary:removeObjectForKey:type:)]) {
             [del tfCrashActionNSMutableDictionary:self removeObjectForKey:aKey type:TFCrashTypeNSMutableDictionaryRemove];
         }
@@ -105,7 +105,7 @@
     if (keyArray && [keyArray isKindOfClass:[NSArray class]]) {
         [self tfsafe_removeObjectsForKeys:keyArray];
     }else{
-        id del = [TFCrashSafeKit shareInstance].crashDelegate;
+        id del = [TFCrashSafeKit shareInstance];
         if ([del respondsToSelector:@selector(tfCrashActionNSMutableDictionary:removeObjectsForKeys:type:)]) {
             [del tfCrashActionNSMutableDictionary:self removeObjectsForKeys:keyArray type:TFCrashTypeNSMutableDictionaryRemoveForKeys];
         }

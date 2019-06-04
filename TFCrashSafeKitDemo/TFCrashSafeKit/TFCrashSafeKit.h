@@ -61,7 +61,7 @@
 
 /* 调用空方法
  */
--(void)tfCrashActionUnrecognizedSelector:(id)obj selector:(SEL)aSelector type:(TFCrashType)type;
+-(id)tfCrashActionUnrecognizedSelector:(id)obj selector:(SEL)aSelector type:(TFCrashType)type;
 
 @end
 

@@ -47,58 +47,90 @@
 
 
 - (id)tfsafe_objectAtIndex0:(NSUInteger)index {
+    id rValue = nil;
     if (index >= 0 && index < self.count) {
-        return [self tfsafe_objectAtIndex0:index];
+        rValue = [self tfsafe_objectAtIndex0:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
-            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
-            return value;
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+                rValue = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+            }
+        }else{
+            @try {
+                rValue = [self tfsafe_objectAtIndex0:index];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 
 - (id)tfsafe_objectAtIndex1:(NSUInteger)index {
+    id rValue = nil;
     if (index >= 0 && index < self.count) {
-        return [self tfsafe_objectAtIndex1:index];
+        rValue = [self tfsafe_objectAtIndex1:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
-            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
-            return value;
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+                rValue = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+            }
+        }else{
+            @try {
+                rValue = [self tfsafe_objectAtIndex1:index];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 
 - (id)tfsafe_objectAtIndexIM:(NSUInteger)index {
+    id rValue = nil;
     if (index >= 0 && index < self.count) {
-        return [self tfsafe_objectAtIndexIM:index];
+        rValue = [self tfsafe_objectAtIndexIM:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
-            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
-            return value;
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+                rValue = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGet];
+            }
+        }else{
+            @try {
+                rValue = [self tfsafe_objectAtIndexIM:index];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 
 - (id)tfsafe_objectAtIndexedSubscriptIM:(NSUInteger)index {
+    id rValue = nil;
     if (index >= 0 && index < self.count) {
-        return [self tfsafe_objectAtIndexedSubscriptIM:index];
+        rValue = [self tfsafe_objectAtIndexedSubscriptIM:index];
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
-            id value = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGetSubscript];
-            return value;
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionNSArray:index:type:)]) {
+                rValue = [del tfCrashActionNSArray:self index:index type:TFCrashTypeNSArrayGetSubscript];
+            }
+        }else{
+            @try {
+                rValue = [self tfsafe_objectAtIndexedSubscriptIM:index];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 

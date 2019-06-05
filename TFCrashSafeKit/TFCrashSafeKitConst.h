@@ -11,8 +11,8 @@
 
 typedef NS_ENUM(NSInteger,TFReportType) {
     TFReportTypeNone = 0,
-    TFReportTypeCustem = 0,
-    TFReportTypeException = 0,
+    TFReportTypeCustem,
+    TFReportTypeException,
 };
 
 typedef NS_ENUM(NSInteger,TFCrashType) {

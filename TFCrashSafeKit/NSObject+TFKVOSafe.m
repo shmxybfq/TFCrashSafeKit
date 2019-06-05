@@ -111,12 +111,21 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
             }
         }
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionKVO:addObserver:forKeyPath:options:context:type:)]) {
-            [del tfCrashActionKVO:self addObserver:observer forKeyPath:keyPath options:options context:context type:TFCrashTypeKVOAddFail];
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionKVO:addObserver:forKeyPath:options:context:type:)]) {
+                [del tfCrashActionKVO:self addObserver:observer forKeyPath:keyPath options:options context:context type:TFCrashTypeKVOAddFail];
+            }
+        }else{
+            @try {
+                [self tfsafe_addObserver:observer forKeyPath:keyPath options:options context:context];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
 }
+
 
 -(void)tfsafe_removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath{
     if (observer && keyPath) {
@@ -131,9 +140,17 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
             }
         }
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:type:)]) {
-            [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath type:TFCrashTypeKVORemoveFail];
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:type:)]) {
+                [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath type:TFCrashTypeKVORemoveFail];
+            }
+        }else{
+            @try {
+                [self tfsafe_removeObserver:observer forKeyPath:keyPath];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
 }
@@ -151,9 +168,17 @@ static inline NSString *tf_getKvoKey(id observed,id target,NSString *path){
             }
         }
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:context:type:)]) {
-            [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath context:context type:TFCrashTypeKVORemoveFail];
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionKVO:removeObserver:forKeyPath:context:type:)]) {
+                [del tfCrashActionKVO:self removeObserver:observer forKeyPath:keyPath context:context type:TFCrashTypeKVORemoveFail];
+            }
+        }else{
+            @try {
+                [self tfsafe_removeObserver:observer forKeyPath:keyPath];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
 }

@@ -24,7 +24,6 @@
 
 @property(nonatomic,assign)TFProtectType protectType;
 
-
 @end
 
 @implementation TFCrashSafeKit

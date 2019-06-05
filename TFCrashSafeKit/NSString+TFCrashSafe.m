@@ -16,6 +16,7 @@
 @implementation NSString (TFCrashSafe)
 
 +(void)useSafe_NSString_TFCrashSafe{
+    
     //普通字符串__NSCFConstantString-__NSCFString-NSMutableString-NSString
     
     //NSString *s006 = [NSString stringWithCString:"abc" encoding:NSUTF8StringEncoding];
@@ -53,93 +54,135 @@
 }
 
 -(NSString *)tfsafe_substringFromIndex:(NSUInteger)from{
+    id rValue = nil;
     if (from >= 0 && from < self.length) {
-        return [self tfsafe_substringFromIndex:from];
+        rValue = [self tfsafe_substringFromIndex:from];
     }else{
         if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringFromIndex:type:)]) {
-                return [del tfCrashActionNSString:self substringFromIndex:from type:TFCrashTypeNSStringFromIndex];
+                rValue = [del tfCrashActionNSString:self substringFromIndex:from type:TFCrashTypeNSStringFromIndex];
             }
+        }else{
+            @try {
+                rValue = [self tfsafe_substringFromIndex:from];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 - (NSString *)tfsafe_substringToIndex:(NSUInteger)to{
+    id rValue = nil;
     if (to >= 0 && to < self.length) {
-        return [self tfsafe_substringToIndex:to];
+        rValue = [self tfsafe_substringToIndex:to];
     }else{
         if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringToIndex:type:)]) {
-                return [del tfCrashActionNSString:self substringToIndex:to type:TFCrashTypeNSStringToIndex];
+                rValue = [del tfCrashActionNSString:self substringToIndex:to type:TFCrashTypeNSStringToIndex];
             }
+        }else{
+            @try {
+                rValue = [self tfsafe_substringToIndex:to];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 - (NSString *)tfsafe_substringWithRange:(NSRange)range{
+    id rValue = nil;
     if (range.location >= 0 &&
         range.length >= 0 &&
         (range.location + range.length) < self.length) {
-        return [self tfsafe_substringWithRange:range];
+        rValue = [self tfsafe_substringWithRange:range];
     }else{
         if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringWithRange:type:)]) {
-                return [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringToIndex];
+                rValue = [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringToIndex];
             }
+        }else{
+            @try {
+                rValue = [self tfsafe_substringWithRange:range];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 -(unichar)tfsafe_characterAtIndex:(NSUInteger)index{
+    unichar rValue = 0;
     if (index >= 0 && index < self.length) {
-        return [self tfsafe_characterAtIndex:index];
+        rValue = [self tfsafe_characterAtIndex:index];
     }else{
         if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:characterAtIndex:type:)]) {
-                return [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex];
+                rValue = [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex];
             }
+        }else{
+            @try {
+                rValue = [self tfsafe_characterAtIndex:index];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return 0;
+    return rValue;
 }
 
 
 
 - (NSString *)tfsafe_substringWithRange9More:(NSRange)range{
+    id rValue = 0;
     if (range.location >= 0 &&
         range.length >= 0 &&
         (range.location + range.length) < self.length) {
-        return [self tfsafe_substringWithRange9More:range];
+        rValue = [self tfsafe_substringWithRange9More:range];
     }else{
         if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringWithRange:type:)]) {
-                return [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringRange9More];
+                rValue = [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringRange9More];
             }
+        }else{
+            @try {
+                rValue = [self tfsafe_substringWithRange9More:range];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return nil;
+    return rValue;
 }
 
 -(unichar)tfsafe_characterAtIndex9More:(NSUInteger)index{
+    unichar rValue = 0;
     if (index >= 0 && index < self.length) {
-        return [self tfsafe_characterAtIndex9More:index];
+        rValue = [self tfsafe_characterAtIndex9More:index];
     }else{
         if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:characterAtIndex:type:)]) {
-                return [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex9More];
+                rValue = [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex9More];
             }
+        }else{
+            @try {
+                rValue = [self tfsafe_characterAtIndex9More:index];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
-    return 0;
+    return rValue;
 }
 
 

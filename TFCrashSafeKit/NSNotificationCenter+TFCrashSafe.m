@@ -69,16 +69,26 @@ tf_synthesize_category_property_retain(instanceAddressPool, setInstanceAddressPo
                 self.instanceAddressPool = [[NSMutableArray alloc]init];
             }
             [self.instanceAddressPool addObject:[NSString stringWithFormat:@"%p",observer]];
+            
         }else{
+            //多次添加
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
                 [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddRepeat];
             }
         }
     }else{
-        id del = [TFCrashSafeKit shareInstance];
-        if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
-           [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddFail];
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
+            id del = [TFCrashSafeKit shareInstance];
+            if ([del respondsToSelector:@selector(tfCrashActionNSNotificationCenter:addObserver:selector:name:object:type:)]) {
+                [del tfCrashActionNSNotificationCenter:self addObserver:observer selector:aSelector name:aName object:anObject type:TFCrashTypeNSNotificationCenterAddFail];
+            }
+        }else{
+            @try {
+                [self tfsafe_addObserver:observer selector:aSelector name:aName object:anObject];
+            } @catch (NSException *exception) {
+                
+            } @finally {}
         }
     }
 }

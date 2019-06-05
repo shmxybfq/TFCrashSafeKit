@@ -56,7 +56,7 @@
     if (from >= 0 && from < self.length) {
         return [self tfsafe_substringFromIndex:from];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringFromIndex:type:)]) {
                 return [del tfCrashActionNSString:self substringFromIndex:from type:TFCrashTypeNSStringFromIndex];
@@ -70,7 +70,7 @@
     if (to >= 0 && to < self.length) {
         return [self tfsafe_substringToIndex:to];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringToIndex:type:)]) {
                 return [del tfCrashActionNSString:self substringToIndex:to type:TFCrashTypeNSStringToIndex];
@@ -86,7 +86,7 @@
         (range.location + range.length) < self.length) {
         return [self tfsafe_substringWithRange:range];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringWithRange:type:)]) {
                 return [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringToIndex];
@@ -100,7 +100,7 @@
     if (index >= 0 && index < self.length) {
         return [self tfsafe_characterAtIndex:index];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:characterAtIndex:type:)]) {
                 return [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex];
@@ -118,7 +118,7 @@
         (range.location + range.length) < self.length) {
         return [self tfsafe_substringWithRange9More:range];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:substringWithRange:type:)]) {
                 return [del tfCrashActionNSString:self substringWithRange:range type:TFCrashTypeNSStringRange9More];
@@ -132,7 +132,7 @@
     if (index >= 0 && index < self.length) {
         return [self tfsafe_characterAtIndex9More:index];
     }else{
-        if ([TFCrashSafeKit shareInstance].collectException) {
+        if ([TFCrashSafeKit shareInstance].reportType == TFReportTypeCustem) {
             id del = [TFCrashSafeKit shareInstance];
             if ([del respondsToSelector:@selector(tfCrashActionNSString:characterAtIndex:type:)]) {
                 return [del tfCrashActionNSString:self characterAtIndex:index type:TFCrashTypeNSStringAtIndex9More];

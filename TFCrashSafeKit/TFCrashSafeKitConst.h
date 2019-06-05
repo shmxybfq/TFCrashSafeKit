@@ -9,6 +9,12 @@
 #ifndef TFCrashSafeKitConst_h
 #define TFCrashSafeKitConst_h
 
+typedef NS_ENUM(NSInteger,TFReportType) {
+    TFReportTypeNone = 0,
+    TFReportTypeCustem = 0,
+    TFReportTypeException = 0,
+};
+
 typedef NS_ENUM(NSInteger,TFCrashType) {
     TFCrashTypeNone = 0,
     
@@ -55,7 +61,9 @@ typedef NS_OPTIONS(NSUInteger, TFProtectType) {
     TFCrashSafeTypeUIThread = 1 << 4,
     TFCrashSafeTypeContainer = 1 << 5,
     TFCrashSafeTypeNotification = 1 << 6,
+    TFCrashSafeTypeUnrecognizedSelector = 1 << 7,
 };
+
 
 /**
  *  exemple :

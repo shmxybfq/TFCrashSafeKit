@@ -67,10 +67,14 @@
 
 @interface TFCrashSafeKit : NSObject
 
-@property(nonatomic,assign)BOOL collectException;
+@property(nonatomic,assign)TFReportType reportType;
 @property(nonatomic,  weak)id<TFCrashSafeKitDelegate>delegate;
 
 +(instancetype)shareInstance;
+
++(void)beginProtect:(TFProtectType)type;
++(void)setReportType:(TFReportType)type;
+
 
 @end
 

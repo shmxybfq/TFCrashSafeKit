@@ -19,7 +19,11 @@
 #import "NSMutableDictionary+TFCrashSafe.h"
 #import "NSNotificationCenter+TFCrashSafe.h"
 #import "TFCrashSafeKit+CrashAction.h"
+#import "UIView+TFUICrashSafe.h"
 @interface TFCrashSafeKit ()
+
+@property(nonatomic,assign)TFProtectType protectType;
+
 
 @end
 
@@ -32,6 +36,42 @@ static TFCrashSafeKit *_tfCrashSafeKit;
         _tfCrashSafeKit = [[[self class] alloc]init];
     });
     return _tfCrashSafeKit;
+}
+
++(void)setReportType:(TFReportType)type{
+    [TFCrashSafeKit shareInstance].reportType = type;
+}
+
++(void)beginProtect:(TFProtectType)type{
+    [TFCrashSafeKit shareInstance].protectType = type;
+    
+    if (type == TFCrashSafeTypeNone) {return;}
+    if (type == TFCrashSafeTypeAll) {
+        type = type | TFCrashSafeTypeKvo;
+        type = type | TFCrashSafeTypeTimer;
+        type = type | TFCrashSafeTypeUIThread;
+        type = type | TFCrashSafeTypeContainer;
+        type = type | TFCrashSafeTypeNotification;
+        type = type | TFCrashSafeTypeUnrecognizedSelector;
+    }
+    
+    if ((type & TFCrashSafeTypeKvo) == TFCrashSafeTypeKvo)
+        [NSObject useSafe_NSObject_TFKVOSafe];
+    if ((type & TFCrashSafeTypeTimer) == TFCrashSafeTypeTimer)
+        [NSTimer useSafe_NSTimer_TFCrashSafe];
+    if ((type & TFCrashSafeTypeUIThread) == TFCrashSafeTypeUIThread)
+        [UIView useSafe_UIView_TFUICrashSafe];
+    if ((type & TFCrashSafeTypeContainer) == TFCrashSafeTypeContainer){
+        [NSArray useSafe_NSArray_TFCrashSafe];
+        [NSMutableArray useSafe_NSMutableArray_TFCrashSafe];
+        [NSDictionary useSafe_NSDictionary_TFCrashSafe];
+        [NSMutableDictionary useSafe_NSMutableDictionary_TFCrashSafe];
+    }
+    if ((type & TFCrashSafeTypeNotification) == TFCrashSafeTypeNotification)
+        [NSNotificationCenter useSafe_NSNotificationCenter_TFCrashSafe];
+    if ((type & TFCrashSafeTypeUnrecognizedSelector) == TFCrashSafeTypeUnrecognizedSelector)
+        [NSObject useSafe_NSObject_UnrecognizedSelector];
+
 }
 
 
